@@ -17,6 +17,7 @@
 		73B1849D1DDAC3CD00DE8832 /* Final_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B1849C1DDAC3CD00DE8832 /* Final_ProjectTests.swift */; };
 		73B184A81DDAC3CD00DE8832 /* Final_ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B184A71DDAC3CD00DE8832 /* Final_ProjectUITests.swift */; };
 		73B184B61DDACC4D00DE8832 /* initialItemScreenCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B184B51DDACC4D00DE8832 /* initialItemScreenCollectionViewController.swift */; };
+		D2C2A7DC1DE3BC3400E8172A /* String+json.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C2A7DB1DE3BC3400E8172A /* String+json.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		73B184A71DDAC3CD00DE8832 /* Final_ProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Final_ProjectUITests.swift; sourceTree = "<group>"; };
 		73B184A91DDAC3CD00DE8832 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		73B184B51DDACC4D00DE8832 /* initialItemScreenCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = initialItemScreenCollectionViewController.swift; sourceTree = "<group>"; };
+		D2C2A7DB1DE3BC3400E8172A /* String+json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+json.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				73B184881DDAC3CD00DE8832 /* Main.storyboard */,
 				732CE97B1DE3AC8300927D73 /* ItemDescriptionViewController.swift */,
 				73B184B51DDACC4D00DE8832 /* initialItemScreenCollectionViewController.swift */,
+				D2C2A7DB1DE3BC3400E8172A /* String+json.swift */,
 				73B1848E1DDAC3CD00DE8832 /* Assets.xcassets */,
 				73B184901DDAC3CD00DE8832 /* LaunchScreen.storyboard */,
 				73B184931DDAC3CD00DE8832 /* Info.plist */,
@@ -269,6 +272,7 @@
 				73B1848D1DDAC3CD00DE8832 /* Final_Project.xcdatamodeld in Sources */,
 				73B184871DDAC3CD00DE8832 /* ViewController.swift in Sources */,
 				73B184B61DDACC4D00DE8832 /* initialItemScreenCollectionViewController.swift in Sources */,
+				D2C2A7DC1DE3BC3400E8172A /* String+json.swift in Sources */,
 				73B184851DDAC3CD00DE8832 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
