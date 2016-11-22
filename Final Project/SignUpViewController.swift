@@ -32,7 +32,20 @@ class SignUpViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func SignUp(sender: AnyObject) {
+        self.performSegueWithIdentifier("toLogin", sender: nil)
+        print ("let's gooo!")
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
+        if segue.identifier == "toLogin" {
+            print("gen")
+            if let nextView: LoginView = segue.destinationViewController as? LoginView{
+                print("correct VC, Login Sreen")
+                //nextVC.incomingText = self.input.text!
+                
+            }
+        }
+    }
     /*
     // MARK: - Navigation
 

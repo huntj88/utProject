@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class LoginView: UIViewController {
 
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -76,12 +76,6 @@ class ViewController: UIViewController {
                 print("correct VC, second screen")
                 //nextVC.incomingText = self.input.text!
                 
-            }
-        }
-        if segue.identifier == "toItem"{
-            print("toItem")
-            if let nextView: initialItemScreenCollectionViewController = segue.destinationViewController as? initialItemScreenCollectionViewController{
-                print("correct VC, second screen")
             }
         }
     }
