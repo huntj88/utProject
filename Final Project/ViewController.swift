@@ -10,6 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var password: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -24,7 +27,8 @@ class ViewController: UIViewController {
         
         let request = NSMutableURLRequest(URL: NSURL(string: "http://138.68.41.247:2996/users/login")!)
         request.HTTPMethod = "POST"
-        let postString = "email=huntj88@gmail.com&password=test"
+        //let postString = "email=huntj88@gmail.com&password=test"
+        let postString = "email="+email.text!+"&password="+password.text!
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
             guard error == nil && data != nil else {                                                          // check for fundamental networking error
@@ -46,8 +50,11 @@ class ViewController: UIViewController {
             if let item = json![0] as? [String: AnyObject] {
                 if let email = item["email"] as? String {
                     print(email)
-                    self.performSegueWithIdentifier("loginSeg", sender: nil)
-                    print ("let's gooo!")
+                    NSOperationQueue.mainQueue().addOperationWithBlock
+                        {
+                        self.performSegueWithIdentifier("loginSeg", sender: nil)
+                        print ("let's gooo!")
+                    }
                 }
             }
             

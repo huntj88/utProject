@@ -67,6 +67,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="email" destination="49M-UC-sOO" id="Jij-2r-onp"/>
+                        <outlet property="password" destination="MVh-Ga-d1f" id="yp5-Dv-RiG"/>
                         <segue destination="8Rn-K0-6m4" kind="show" identifier="loginSeg" id="qFe-PV-dLb"/>
                     </connections>
                 </viewController>
@@ -77,7 +79,6 @@
         <!--View Controller-->
         <scene sceneID="Pxp-o4-WWy">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7AL-Dt-bbx" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="v0V-Tc-ATW" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5do-Ww-ao6"/>
@@ -198,6 +199,7 @@
                         </constraints>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7AL-Dt-bbx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="292" y="1222"/>
         </scene>
