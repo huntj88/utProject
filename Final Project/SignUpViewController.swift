@@ -77,7 +77,7 @@ class SignUpViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
         if segue.identifier == "toLogin" {
             print("gen")
-            if let nextView: LoginView = segue.destinationViewController as? LoginView{
+            if let nextView: ViewController = segue.destinationViewController as? ViewController{
                 print("correct VC, Login Sreen")
                 //nextVC.incomingText = self.input.text!
                 
