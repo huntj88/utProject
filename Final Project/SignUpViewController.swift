@@ -12,7 +12,6 @@ class SignUpViewController: UIViewController {
     //MARK: Properties
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
-    @IBOutlet weak var name: UITextField!
     @IBOutlet weak var cellPhone: UITextField!
     @IBOutlet weak var address: UITextField!
     @IBOutlet weak var aptNumber: UITextField!
