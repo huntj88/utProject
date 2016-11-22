@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		6D9B1E821DE3F90E00A5547C /* user.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D9B1E811DE3F90E00A5547C /* user.plist */; };
 		6D9B1E841DE3F95000A5547C /* plist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B1E831DE3F95000A5547C /* plist.swift */; };
+		732201871DE4091300DF67FC /* initialItemsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732201861DE4091300DF67FC /* initialItemsCollectionViewController.swift */; };
+		732201891DE40FA000DF67FC /* item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732201881DE40FA000DF67FC /* item.swift */; };
 		732CE97C1DE3AC8300927D73 /* ItemDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732CE97B1DE3AC8300927D73 /* ItemDescriptionViewController.swift */; };
 		732CE97E1DE3C11B00927D73 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732CE97D1DE3C11B00927D73 /* SignUpViewController.swift */; };
 		73B184851DDAC3CD00DE8832 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B184841DDAC3CD00DE8832 /* AppDelegate.swift */; };
@@ -43,6 +45,8 @@
 /* Begin PBXFileReference section */
 		6D9B1E811DE3F90E00A5547C /* user.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = user.plist; sourceTree = "<group>"; };
 		6D9B1E831DE3F95000A5547C /* plist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = plist.swift; sourceTree = "<group>"; };
+		732201861DE4091300DF67FC /* initialItemsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = initialItemsCollectionViewController.swift; sourceTree = "<group>"; };
+		732201881DE40FA000DF67FC /* item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = item.swift; sourceTree = "<group>"; };
 		732CE97B1DE3AC8300927D73 /* ItemDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemDescriptionViewController.swift; path = ../ItemDescriptionViewController.swift; sourceTree = "<group>"; };
 		732CE97D1DE3C11B00927D73 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		73B184811DDAC3CD00DE8832 /* Final Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Final Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,11 +118,13 @@
 				73B184841DDAC3CD00DE8832 /* AppDelegate.swift */,
 				73B184861DDAC3CD00DE8832 /* ViewController.swift */,
 				73B184881DDAC3CD00DE8832 /* Main.storyboard */,
+				732201861DE4091300DF67FC /* initialItemsCollectionViewController.swift */,
 				6D9B1E811DE3F90E00A5547C /* user.plist */,
 				732CE97D1DE3C11B00927D73 /* SignUpViewController.swift */,
 				732CE97B1DE3AC8300927D73 /* ItemDescriptionViewController.swift */,
 				73B184B51DDACC4D00DE8832 /* initialItemScreenCollectionViewController.swift */,
 				D2C2A7DB1DE3BC3400E8172A /* String+json.swift */,
+				732201881DE40FA000DF67FC /* item.swift */,
 				6D9B1E831DE3F95000A5547C /* plist.swift */,
 				73B1848E1DDAC3CD00DE8832 /* Assets.xcassets */,
 				73B184901DDAC3CD00DE8832 /* LaunchScreen.storyboard */,
@@ -280,11 +286,13 @@
 			files = (
 				732CE97E1DE3C11B00927D73 /* SignUpViewController.swift in Sources */,
 				732CE97C1DE3AC8300927D73 /* ItemDescriptionViewController.swift in Sources */,
+				732201891DE40FA000DF67FC /* item.swift in Sources */,
 				6D9B1E841DE3F95000A5547C /* plist.swift in Sources */,
 				73B1848D1DDAC3CD00DE8832 /* Final_Project.xcdatamodeld in Sources */,
 				73B184871DDAC3CD00DE8832 /* ViewController.swift in Sources */,
 				73B184B61DDACC4D00DE8832 /* initialItemScreenCollectionViewController.swift in Sources */,
 				D2C2A7DC1DE3BC3400E8172A /* String+json.swift in Sources */,
+				732201871DE4091300DF67FC /* initialItemsCollectionViewController.swift in Sources */,
 				73B184851DDAC3CD00DE8832 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

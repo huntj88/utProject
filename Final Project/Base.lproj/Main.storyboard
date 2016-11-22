@@ -248,10 +248,10 @@
             </objects>
             <point key="canvasLocation" x="-88" y="1276"/>
         </scene>
-        <!--Initial Item Screen Collection View Controller-->
+        <!--Initial Items Collection View Controller-->
         <scene sceneID="MKb-CJ-EyI">
             <objects>
-                <collectionViewController storyboardIdentifier="dfgsdfg" id="J6z-8m-Lew" customClass="initialItemScreenCollectionViewController" customModule="Final_Project" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="dfgsdfg" id="J6z-8m-Lew" customClass="initialItemsCollectionViewController" customModule="Final_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="YK2-aJ-uAP">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
