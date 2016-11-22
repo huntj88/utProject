@@ -10,14 +10,14 @@ import UIKit
 
 class SignUpViewController: UIViewController {
     //MARK: Properties
-    @IBOutlet weak var Email: UITextField!
-    @IBOutlet weak var Password: UITextField!
-    @IBOutlet weak var CellPhone: UITextField!
-    @IBOutlet weak var Address: UITextField!
-    @IBOutlet weak var AptNumber: UITextField!
-    @IBOutlet weak var City: UITextField!
-    @IBOutlet weak var ZipCode: UITextField!
-    @IBOutlet weak var State: UITextField!
+    @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var cellPhone: UITextField!
+    @IBOutlet weak var address: UITextField!
+    @IBOutlet weak var aptNumber: UITextField!
+    @IBOutlet weak var city: UITextField!
+    @IBOutlet weak var zipCode: UITextField!
+    @IBOutlet weak var state: UITextField!
     
     
     
@@ -33,8 +33,46 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func SignUp(sender: AnyObject) {
-        self.performSegueWithIdentifier("toLogin", sender: nil)
-        print ("let's gooo!")
+        
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://138.68.41.247:2996/users/register")!)
+        request.HTTPMethod = "POST"
+        //let postString = "email=huntj88@gmail.com&password=test"
+        var postString = "email="+email.text!+"&password="+password.text!+"&=phone"+cellPhone.text!
+        postString+="&address="+address.text!+"&zip="+zipCode.text!+"&apt="+aptNumber.text!+"&city="+city.text!+"&name="
+        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
+            guard error == nil && data != nil else {                                                          // check for fundamental networking error
+                print("error=\(error)")
+                return
+            }
+            
+            if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {           // check for http errors
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(response)")
+            }
+            
+            
+            let responseString = String(data: data!, encoding: NSUTF8StringEncoding)!
+            print("responseString = \(responseString)")
+            
+            let json: AnyObject? = responseString.parseJSONString
+            
+            if let item = json![0] as? [String: AnyObject] {
+                if let email = item["email"] as? String {
+                    print(email)
+                    NSOperationQueue.mainQueue().addOperationWithBlock
+                        {
+                            self.performSegueWithIdentifier("toLogin", sender: nil)
+                            print ("let's gooo!")
+                    }
+                }
+            }
+            
+            
+        }
+        task.resume()
+        
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
         if segue.identifier == "toLogin" {
