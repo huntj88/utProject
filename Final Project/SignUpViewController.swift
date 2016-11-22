@@ -7,17 +7,21 @@
 //
 
 import UIKit
+import CoreData
 
 class SignUpViewController: UIViewController {
     //MARK: Properties
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
-    @IBOutlet weak var name: UITextField!
     @IBOutlet weak var cellPhone: UITextField!
     @IBOutlet weak var address: UITextField!
     @IBOutlet weak var aptNumber: UITextField!
     @IBOutlet weak var city: UITextField!
     @IBOutlet weak var zipCode: UITextField!
+    @IBOutlet weak var fullName: UITextField!
+    
+    var userID:Int?
+    var apiKey:String?
     
     
     
@@ -38,8 +42,10 @@ class SignUpViewController: UIViewController {
         let request = NSMutableURLRequest(URL: NSURL(string: "http://138.68.41.247:2996/users/register")!)
         request.HTTPMethod = "POST"
         //let postString = "email=huntj88@gmail.com&password=test"
-        var postString = "email="+email.text!+"&password="+password.text!+"&=phone"+cellPhone.text!
-        postString+="&address="+address.text!+"&zip="+zipCode.text!+"&apt="+aptNumber.text!+"&city="+city.text!+"&name="
+        var postString = "email="+email.text!+"&password="+password.text!+"&phone="+cellPhone.text!
+        postString+="&address="+address.text!+"&zip="+zipCode.text!+"&apt="+aptNumber.text!
+        postString+="&city="+city.text!+"&name="+fullName.text!
+        
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
             guard error == nil && data != nil else {                                                          // check for fundamental networking error
@@ -59,13 +65,33 @@ class SignUpViewController: UIViewController {
             let json: AnyObject? = responseString.parseJSONString
             
             if let item = json![0] as? [String: AnyObject] {
-                if let email = item["email"] as? String {
-                    print(email)
-                    NSOperationQueue.mainQueue().addOperationWithBlock
-                        {
-                            self.performSegueWithIdentifier("toLogin", sender: nil)
-                            print ("let's gooo!")
+                NSOperationQueue.mainQueue().addOperationWithBlock
+                {
+                    self.userID = item["userID"] as? Int
+                    self.apiKey = item["apiKey"] as? String
+                    //print("\(self.userID!)  "+self.apiKey!)
+                    print(self.userID!)
+                    print(self.apiKey!)
+                    
+                    
+                    //1
+                    if let plist = Plist(name: "user") {
+                        //2
+                        let dict = plist.getMutablePlistFile()!
+                        dict["userID"] = self.userID!
+                        dict["apiKey"] = self.apiKey!
+                        do {
+                            try plist.addValuesToPlistFile(dict)
+                        } catch {
+                            print(error)
+                        }
+                        //4
+                        print(plist.getValuesInPlistFile())
+                    } else {
+                        print("Unable to get Plist")
                     }
+                    
+                    self.performSegueWithIdentifier("toLogin", sender: nil)
                 }
             }
             

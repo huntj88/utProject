@@ -13,9 +13,31 @@ class ViewController: UIViewController {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     
+    var userID:Int?
+    var apiKey:String?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+    }
+    override func viewWillAppear(animated: Bool) {
+        
+        if let plist = Plist(name: "user") {
+            let dict = plist.getValuesInPlistFile()
+            if (dict!["userID"]! as? Int) != 0
+            {
+                print("login")
+                NSOperationQueue.mainQueue().addOperationWithBlock {
+                    [weak self] in
+                    self?.performSegueWithIdentifier("loginSeg", sender: self)
+                }
+            }
+        } else {
+            print("Unable to get Plist")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,14 +69,37 @@ class ViewController: UIViewController {
             
             let json: AnyObject? = responseString.parseJSONString
             
+            
+            
             if let item = json![0] as? [String: AnyObject] {
-                if let email = item["email"] as? String {
-                    print(email)
-                    NSOperationQueue.mainQueue().addOperationWithBlock
-                        {
+                NSOperationQueue.mainQueue().addOperationWithBlock
+                    {
+                        self.userID = item["userID"] as? Int
+                        self.apiKey = item["apiKey"] as? String
+                        //print("\(self.userID!)  "+self.apiKey!)
+                        print(self.userID!)
+                        print(self.apiKey!)
+                        
+                        
+                        //1
+                        if let plist = Plist(name: "user") {
+                            //2
+                            let dict = plist.getMutablePlistFile()!
+                            dict["userID"] = self.userID!
+                            dict["apiKey"] = self.apiKey!
+                            do {
+                                try plist.addValuesToPlistFile(dict)
+                            } catch {
+                                print(error)
+                            }
+                            //4
+                            print("woo")
+                            print(plist.getValuesInPlistFile())
+                        } else {
+                            print("Unable to get Plist")
+                        }
+                        
                         self.performSegueWithIdentifier("loginSeg", sender: nil)
-                        print ("let's gooo!")
-                    }
                 }
             }
             
