@@ -38,7 +38,7 @@ class ViewController: UIViewController {
             print("toItem")
             if let nextView: initialItemScreenCollectionViewController = segue.destinationViewController as? initialItemScreenCollectionViewController{
                 print("correct VC, second screen")
+            }
         }
     }
 }
-
