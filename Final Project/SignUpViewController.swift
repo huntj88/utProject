@@ -12,6 +12,7 @@ class SignUpViewController: UIViewController {
     //MARK: Properties
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var name: UITextField!
     @IBOutlet weak var cellPhone: UITextField!
     @IBOutlet weak var address: UITextField!
     @IBOutlet weak var aptNumber: UITextField!
@@ -86,7 +87,6 @@ class SignUpViewController: UIViewController {
             if let nextView: ViewController = segue.destinationViewController as? ViewController{
                 print("correct VC, Login Sreen")
                 //nextVC.incomingText = self.input.text!
-                
             }
         }
     }
