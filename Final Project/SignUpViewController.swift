@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class SignUpViewController: UIViewController {
     //MARK: Properties
@@ -71,6 +72,25 @@ class SignUpViewController: UIViewController {
                     //print("\(self.userID!)  "+self.apiKey!)
                     print(self.userID!)
                     print(self.apiKey!)
+                    
+                    
+                    //1
+                    if let plist = Plist(name: "user") {
+                        //2
+                        let dict = plist.getMutablePlistFile()!
+                        dict["userID"] = self.userID!
+                        dict["apiKey"] = self.apiKey!
+                        do {
+                            try plist.addValuesToPlistFile(dict)
+                        } catch {
+                            print(error)
+                        }
+                        //4
+                        print(plist.getValuesInPlistFile())
+                    } else {
+                        print("Unable to get Plist")
+                    }
+                    
                     self.performSegueWithIdentifier("toLogin", sender: nil)
                 }
             }
