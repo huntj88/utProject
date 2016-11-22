@@ -234,14 +234,14 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="Address" destination="n61-60-UCj" id="m44-Or-3ov"/>
-                        <outlet property="AptNumber" destination="nkg-pe-yhS" id="wkF-1q-ubM"/>
-                        <outlet property="CellPhone" destination="fC8-wS-ics" id="ZAZ-nA-FLM"/>
-                        <outlet property="City" destination="Q9F-S6-3hU" id="5BG-pD-8PJ"/>
-                        <outlet property="Email" destination="Fbc-mt-Ntv" id="493-1z-YwR"/>
-                        <outlet property="Password" destination="fQ1-Nb-LKE" id="qeH-mz-OOr"/>
-                        <outlet property="ZipCode" destination="n32-z1-pEs" id="Vo3-4A-LB4"/>
-                        <outlet property="name" destination="Q78-QH-RKx" id="yDz-HY-f0I"/>
+                        <outlet property="address" destination="n61-60-UCj" id="1lJ-0v-RbJ"/>
+                        <outlet property="aptNumber" destination="nkg-pe-yhS" id="NYd-0Z-Log"/>
+                        <outlet property="cellPhone" destination="fC8-wS-ics" id="F8C-C0-LBH"/>
+                        <outlet property="city" destination="Q9F-S6-3hU" id="7BY-gZ-PzL"/>
+                        <outlet property="email" destination="Fbc-mt-Ntv" id="U8x-ZW-bTw"/>
+                        <outlet property="fullName" destination="Q78-QH-RKx" id="Tv9-tO-DjG"/>
+                        <outlet property="password" destination="fQ1-Nb-LKE" id="CFC-xb-nCS"/>
+                        <outlet property="zipCode" destination="n32-z1-pEs" id="lCT-UJ-PNn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7AL-Dt-bbx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -344,7 +344,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jye-hl-bdf">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jye-hl-bdf">
                                 <rect key="frame" x="0.0" y="85" width="600" height="466"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
