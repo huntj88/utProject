@@ -8,22 +8,19 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "Cell1"
+class initialItemsCollectionViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
 
-class initialItemsCollectionViewController: UICollectionViewController {
-
+    @IBOutlet weak var myCollectionView: UICollectionView!
     
     var userID:Int?
     var apiKey:String?
     var items = [item]()
+    //var myCollectionView:UICollectionView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadUserInfo()
-        
-        
-        
         
         
         
@@ -46,14 +43,15 @@ class initialItemsCollectionViewController: UICollectionViewController {
             
             
             let responseString = String(data: data!, encoding: NSUTF8StringEncoding)!
-            print("responseString = \(responseString)")
             
             
             let json: AnyObject? = responseString.parseJSONString
             
             var i = 0
-            while(i<1)
+            
+            while(i<json?.count)
             {
+                
                 if let jsonItem = json![i] as? [String: AnyObject] {
                     /*self.userID = jsonItem["userID"] as? Int
                     self.apiKey = jsonItem["apiKey"] as? String
@@ -66,24 +64,23 @@ class initialItemsCollectionViewController: UICollectionViewController {
                 }
                 i+=1
                 print(self.items.count)
-
                 
             }
-            
-            
-            
-            
-            
-
-            
+            dispatch_async(dispatch_get_main_queue()) {
+                self.myCollectionView.reloadData()
+            }
             
         }
+        
+        
+        print(items.count)
+        
+        
+        
         task.resume()
         
-        
-        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        myCollectionView.dataSource = self
+        myCollectionView.delegate = self
     }
     
     func loadUserInfo()
@@ -109,69 +106,25 @@ class initialItemsCollectionViewController: UICollectionViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    // MARK: UICollectionViewDataSource
-
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
-    }
-
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
     
-        // Configure the cell
     
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    
+        return items.count
+    }
+    
+
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell:ItemCollectionViewCell = myCollectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ItemCollectionViewCell
+        
+        cell.itemName.text = items[indexPath.row].name
         return cell
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
     
+    func collectionView(collectionView: UICollectionView, didSelectItemAt indexPath: NSIndexPath) {
+        // handle tap events
+        print("You selected cell #\(indexPath.item)!")
     }
-    */
 
 }
