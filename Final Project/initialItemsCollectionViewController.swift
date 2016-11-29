@@ -17,13 +17,12 @@ class initialItemsCollectionViewController: UIViewController,UICollectionViewDat
     var apiKey:String?
     var items = [item]()
     //var myCollectionView:UICollectionView?
+    var selectedItemName: String = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadUserInfo()
-        
-        
-        
 
         let request = NSMutableURLRequest(URL: NSURL(string: "http://138.68.41.247:2996/items/getByCategory")!)
         request.HTTPMethod = "POST"
@@ -122,9 +121,22 @@ class initialItemsCollectionViewController: UIViewController,UICollectionViewDat
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAt indexPath: NSIndexPath) {
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         // handle tap events
-        print("You selected cell #\(indexPath.item)!")
+        selectedItemName = items[indexPath.row].name
+        performSegueWithIdentifier("toItemDescriptionView", sender: UICollectionViewCell())
+        print("You selected cell #\(indexPath.item) named \(selectedItemName)!")
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
+        if segue.identifier == "toItemDescriptionView" {
+            print("toItemDescriptionSeg executed!")
+            if let nextView: ItemDescriptionViewController = segue.destinationViewController as? ItemDescriptionViewController{
+                print("correct VC, ItemDescription Screen")
+                nextView.itemText = self.selectedItemName
+                nextView.userNameText = "Username of the seller"
+                nextView.userImagePhoto = UIImage(named: "Background")!
+            }
+        }
     }
 
 }
