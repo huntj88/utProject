@@ -310,7 +310,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QbT-Hh-zrE">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="b5V-t0-O5Y"/>
+                                    <constraint firstAttribute="height" constant="44" id="Fl6-AG-bdY"/>
                                 </constraints>
                                 <items>
                                     <navigationItem id="xNQ-Wh-PpI">
@@ -354,10 +354,10 @@
             </objects>
             <point key="canvasLocation" x="1269" y="445"/>
         </scene>
-        <!--View Controller-->
+        <!--Categories View Controller-->
         <scene sceneID="ZQ9-L9-GRj">
             <objects>
-                <viewController id="8is-W7-3HX" sceneMemberID="viewController">
+                <viewController id="8is-W7-3HX" customClass="CategoriesViewController" customModule="Final_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="D5w-y4-o27"/>
                         <viewControllerLayoutGuide type="bottom" id="q3n-1t-bYo"/>
@@ -376,13 +376,24 @@
                                 <rect key="frame" x="0.0" y="85" width="600" height="466"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="chC-zJ-bGe">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell2" id="chC-zJ-bGe" customClass="CategoryTableViewCell" customModule="Final_Project" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="chC-zJ-bGe" id="E5E-f7-1sE">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="category name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uhb-aJ-scQ">
+                                                    <rect key="frame" x="8" y="11" width="115" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="categoryName" destination="Uhb-aJ-scQ" id="0wI-5D-hgv"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -397,6 +408,9 @@
                             <constraint firstItem="Kue-sv-jd4" firstAttribute="top" secondItem="D5w-y4-o27" secondAttribute="bottom" id="gEf-TM-NoV"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="myTableView" destination="jye-hl-bdf" id="rpf-no-6Va"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="crh-aN-u2w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
