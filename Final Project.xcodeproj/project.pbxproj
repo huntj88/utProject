@@ -27,6 +27,7 @@
 		73B1849D1DDAC3CD00DE8832 /* Final_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B1849C1DDAC3CD00DE8832 /* Final_ProjectTests.swift */; };
 		73B184A81DDAC3CD00DE8832 /* Final_ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B184A71DDAC3CD00DE8832 /* Final_ProjectUITests.swift */; };
 		73B184B61DDACC4D00DE8832 /* initialItemScreenCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B184B51DDACC4D00DE8832 /* initialItemScreenCollectionViewController.swift */; };
+		73BCF7E01DEE64B1003C85C3 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BCF7DF1DEE64B1003C85C3 /* MyProfileViewController.swift */; };
 		D2C2A7DC1DE3BC3400E8172A /* String+json.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C2A7DB1DE3BC3400E8172A /* String+json.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,7 @@
 		73B184A71DDAC3CD00DE8832 /* Final_ProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Final_ProjectUITests.swift; sourceTree = "<group>"; };
 		73B184A91DDAC3CD00DE8832 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		73B184B51DDACC4D00DE8832 /* initialItemScreenCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = initialItemScreenCollectionViewController.swift; sourceTree = "<group>"; };
+		73BCF7DF1DEE64B1003C85C3 /* MyProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
 		D2C2A7DB1DE3BC3400E8172A /* String+json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+json.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,6 +130,7 @@
 				73B184841DDAC3CD00DE8832 /* AppDelegate.swift */,
 				73B184861DDAC3CD00DE8832 /* ViewController.swift */,
 				73B184881DDAC3CD00DE8832 /* Main.storyboard */,
+				73BCF7DF1DEE64B1003C85C3 /* MyProfileViewController.swift */,
 				732201861DE4091300DF67FC /* initialItemsCollectionViewController.swift */,
 				6D9B1E811DE3F90E00A5547C /* user.plist */,
 				732CE97D1DE3C11B00927D73 /* SignUpViewController.swift */,
@@ -313,6 +316,7 @@
 				D2C2A7DC1DE3BC3400E8172A /* String+json.swift in Sources */,
 				6DDD2FC41DED025D006034EF /* CategoryTableViewCell.swift in Sources */,
 				732201871DE4091300DF67FC /* initialItemsCollectionViewController.swift in Sources */,
+				73BCF7E01DEE64B1003C85C3 /* MyProfileViewController.swift in Sources */,
 				73B184851DDAC3CD00DE8832 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
