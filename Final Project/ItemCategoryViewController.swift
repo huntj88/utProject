@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemCategoryViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
+class ItemCategoryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var myCollectionView: UICollectionView!
     
@@ -133,6 +133,11 @@ class ItemCategoryViewController: UIViewController,UICollectionViewDataSource,UI
         // handle tap events
         indexOfItem = indexPath.row
         performSegueWithIdentifier("toItemDescriptionView", sender: UICollectionViewCell())
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let width = collectionView.frame.width / 2 - 1
+        return CGSizeMake(width, width)
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
         if segue.identifier == "toItemDescriptionView" {

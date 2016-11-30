@@ -9,7 +9,7 @@
 import UIKit
 
 private let reuseIdentifier = "Cell1"
-class initialItemsCollectionViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,RefreshProtocol {
+class initialItemsCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, RefreshProtocol {
 
     @IBOutlet weak var myCollectionView: UICollectionView!
     
@@ -148,6 +148,7 @@ class initialItemsCollectionViewController: UIViewController,UICollectionViewDat
         let cell:ItemCollectionViewCell = myCollectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ItemCollectionViewCell
         
         cell.itemName.text = items[indexPath.row].itemName
+        cell.itemImage.image = UIImage(named: "TempItemPic")
         return cell
     }
     
@@ -173,6 +174,11 @@ class initialItemsCollectionViewController: UIViewController,UICollectionViewDat
                 nextView.delegate = self
             }
         }
+    }
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let width = collectionView.frame.width / 2 - 1
+        
+        return CGSizeMake(width, width)
     }
 
 }
