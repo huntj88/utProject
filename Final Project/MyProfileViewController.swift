@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyProfileViewController: UIViewController ,UICollectionViewDelegate, UICollectionViewDataSource{
+class MyProfileViewController: UIViewController ,UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     var items = [item]()
     
@@ -23,6 +23,7 @@ class MyProfileViewController: UIViewController ,UICollectionViewDelegate, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        profileImage.image = UIImage(named: "TempProfilePic")
 
         // Do any additional setup after loading the view.
         myListings.dataSource = self
@@ -51,8 +52,13 @@ class MyProfileViewController: UIViewController ,UICollectionViewDelegate, UICol
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell : ItemCollectionViewCell = myListings.dequeueReusableCellWithReuseIdentifier("myItems", forIndexPath: indexPath) as! ItemCollectionViewCell
         //cell.itemName.text = items[indexPath.row].itemName
-        //cell.itemImage.image = items[indexPath.row].itemImage
+        cell.itemImage.image = UIImage(named: "TempItemPic")!
         return cell
     }
     
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let width = collectionView.frame.width / 3
+        
+        return CGSizeMake(width, width)
+    }
 }

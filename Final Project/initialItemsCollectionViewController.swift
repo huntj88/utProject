@@ -9,7 +9,7 @@
 import UIKit
 
 private let reuseIdentifier = "Cell1"
-class initialItemsCollectionViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,RefreshProtocol {
+class initialItemsCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, RefreshProtocol {
 
     @IBOutlet weak var myCollectionView: UICollectionView!
     
@@ -173,6 +173,11 @@ class initialItemsCollectionViewController: UIViewController,UICollectionViewDat
                 nextView.delegate = self
             }
         }
+    }
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let width = collectionView.frame.width / 3 - 1
+        
+        return CGSizeMake(width, width)
     }
 
 }

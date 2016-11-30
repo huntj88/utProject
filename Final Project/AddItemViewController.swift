@@ -13,7 +13,7 @@ protocol RefreshProtocol {
     func setRefresh()
 }
 
-class AddItemViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate , UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AddItemViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate , UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout {
 
     //MARK: Properties
     @IBOutlet weak var itemTitle: UITextField!
@@ -149,10 +149,13 @@ class AddItemViewController: UIViewController, UICollectionViewDataSource, UICol
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         //selecting image form photo library and appending it to selectedImagesArray
         print("Calling func imagePickerController")
+        
         var currentImage : UIImage?
         currentImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        
         selectedImagesArray.append(currentImage!)
         photoCollectionView.reloadData()
+        
         dismissViewControllerAnimated(true, completion: nil)
         print("you have added \(currentImage) and your array is \(selectedImagesArray.count)")
     }
@@ -163,8 +166,13 @@ class AddItemViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell : ItemCollectionViewCell = photoCollectionView.dequeueReusableCellWithReuseIdentifier("takenPhotos", forIndexPath: indexPath) as! ItemCollectionViewCell
+        
         cell.itemImage.image = selectedImagesArray[indexPath.row]
         return cell
+    }
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let width = collectionView.frame.width / 3 - 1
         
+        return CGSizeMake(width, width)
     }
 }
