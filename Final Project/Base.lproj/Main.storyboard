@@ -420,6 +420,7 @@
                     </view>
                     <connections>
                         <outlet property="myTableView" destination="jye-hl-bdf" id="rpf-no-6Va"/>
+                        <segue destination="T61-B3-U7l" kind="show" identifier="itemCategorySegue" id="vwX-3y-Xpw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="crh-aN-u2w" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -801,6 +802,68 @@
             </objects>
             <point key="canvasLocation" x="1582" y="1224"/>
         </scene>
+        <!--Item Category View Controller-->
+        <scene sceneID="kcz-EP-J6A">
+            <objects>
+                <viewController id="T61-B3-U7l" customClass="ItemCategoryViewController" customModule="Final_Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aBA-NT-TPX"/>
+                        <viewControllerLayoutGuide type="bottom" id="wFe-Ko-o8g"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EuU-TV-CDf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gpB-n1-bfY">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="UHP-WR-lug">
+                                    <size key="itemSize" width="155" height="147"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="categoryItemCell" id="F4D-r1-4MC" customClass="ItemCollectionViewCell" customModule="Final_Project" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="64" width="155" height="147"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="155" height="147"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOD-FC-Cjs">
+                                                    <rect key="frame" x="8" y="118" width="139" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" red="0.40848781016726576" green="1" blue="0.50060114421040236" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="itemName" destination="MOD-FC-Cjs" id="AyJ-Yb-zVs"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gpB-n1-bfY" firstAttribute="top" secondItem="EuU-TV-CDf" secondAttribute="top" id="6LD-Fk-hhi"/>
+                            <constraint firstItem="gpB-n1-bfY" firstAttribute="leading" secondItem="EuU-TV-CDf" secondAttribute="leading" id="BuW-6E-fuD"/>
+                            <constraint firstItem="wFe-Ko-o8g" firstAttribute="top" secondItem="gpB-n1-bfY" secondAttribute="bottom" id="WqC-0t-onb"/>
+                            <constraint firstAttribute="trailing" secondItem="gpB-n1-bfY" secondAttribute="trailing" id="lfI-BM-1y2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="myCollectionView" destination="gpB-n1-bfY" id="mP5-c0-SaN"/>
+                        <segue destination="LYH-ZV-IYr" kind="show" identifier="toItemDescriptionView" id="WyJ-Fb-BUF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jdE-Tf-qCV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2914" y="99"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="wgZ-7N-JPH">
             <objects>
@@ -877,4 +940,7 @@
     <resources>
         <image name="Background" width="1024" height="768"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="WyJ-Fb-BUF"/>
+    </inferredMetricsTieBreakers>
 </document>
