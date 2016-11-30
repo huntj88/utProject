@@ -39,8 +39,10 @@ class AddItemViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        photoCollectionView.reloadData()
         print("hi")
+        
+        photoCollectionView.dataSource = self
+        photoCollectionView.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -136,7 +138,7 @@ class AddItemViewController: UIViewController, UICollectionViewDataSource, UICol
         presentViewController(picker, animated: true, completion: nil)
     }
     @IBAction func photoLibraryAction(sender: UIButton) {
-        print("photo!")
+        print("Pressed photolibrary Button!")
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.sourceType = .PhotoLibrary
@@ -146,7 +148,7 @@ class AddItemViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         //selecting image form photo library and appending it to selectedImagesArray
-        print("Hello")
+        print("Calling func imagePickerController")
         var currentImage : UIImage?
         currentImage = info[UIImagePickerControllerOriginalImage] as? UIImage
         selectedImagesArray.append(currentImage!)
@@ -161,9 +163,7 @@ class AddItemViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell : ItemCollectionViewCell = photoCollectionView.dequeueReusableCellWithReuseIdentifier("takenPhotos", forIndexPath: indexPath) as! ItemCollectionViewCell
-        
         cell.itemImage.image = selectedImagesArray[indexPath.row]
-        photoCollectionView.reloadData()
         return cell
         
     }
