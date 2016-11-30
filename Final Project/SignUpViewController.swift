@@ -12,10 +12,10 @@ import CoreData
 class SignUpViewController: UIViewController {
     //MARK: Properties
     @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var cellPhone: UITextField!
     @IBOutlet weak var address: UITextField!
-    @IBOutlet weak var aptNumber: UITextField!
     @IBOutlet weak var city: UITextField!
     @IBOutlet weak var zipCode: UITextField!
     @IBOutlet weak var fullName: UITextField!
@@ -43,7 +43,7 @@ class SignUpViewController: UIViewController {
         request.HTTPMethod = "POST"
         //let postString = "email=huntj88@gmail.com&password=test"
         var postString = "email="+email.text!+"&password="+password.text!+"&phone="+cellPhone.text!
-        postString+="&address="+address.text!+"&zip="+zipCode.text!+"&apt="+aptNumber.text!
+        postString+="&address="+address.text!+"&zip="+zipCode.text!+"&username="+username.text!
         postString+="&city="+city.text!+"&name="+fullName.text!
         
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
