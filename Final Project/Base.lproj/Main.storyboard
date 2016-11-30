@@ -578,28 +578,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVa-ke-voF">
-                                <rect key="frame" x="276" y="550" width="49" height="30"/>
-                                <state key="normal" title="Submit"/>
-                                <connections>
-                                    <action selector="submitItem:" destination="i4d-dy-rCy" eventType="touchUpInside" id="Au2-UA-3sI"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QPr-Ve-G33">
-                                <rect key="frame" x="13" y="105" width="97" height="30"/>
-                                <accessibility key="accessibilityConfiguration" hint="Title"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price $" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zeg-UH-7Cj">
+                                <rect key="frame" x="8" y="110" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="Fx6-Ae-Icx"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Information about your listing here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HEt-5e-LKd">
-                                <rect key="frame" x="13" y="166" width="240" height="128"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Information about your listing here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HEt-5e-LKd">
+                                <rect key="frame" x="8" y="148" width="584" height="150"/>
                                 <color key="backgroundColor" red="0.0" green="0.92825885065819991" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="0H9-dF-Hfw"/>
+                                    <constraint firstAttribute="width" constant="584" id="qj6-HO-e9x"/>
+                                </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="swa-bg-HEK">
-                                <rect key="frame" x="0.0" y="346" width="600" height="150"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="swa-bg-HEK">
+                                <rect key="frame" x="8" y="306" width="584" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="soU-hr-ITD"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xRz-dg-yqH">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -608,7 +610,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="jrt-Hq-k3b">
-                                        <rect key="frame" x="0.0" y="64" width="150" height="150"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
@@ -619,11 +621,46 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UBo-3k-ZLv">
+                                <rect key="frame" x="264" y="464" width="72" height="30"/>
+                                <state key="normal" title="Add photo"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVa-ke-voF">
+                                <rect key="frame" x="276" y="550" width="49" height="30"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitItem:" destination="i4d-dy-rCy" eventType="touchUpInside" id="Au2-UA-3sI"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Listing title here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QPr-Ve-G33">
+                                <rect key="frame" x="8" y="72" width="584" height="30"/>
+                                <color key="backgroundColor" red="0.11764705882352941" green="0.92156862745098034" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
+                                <accessibility key="accessibilityConfiguration" hint="Title"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="YSb-s6-J3h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="JVa-ke-voF" firstAttribute="centerX" secondItem="3xA-cS-VHv" secondAttribute="centerX" id="acn-eh-HMc"/>
-                            <constraint firstItem="Qnl-5R-A4e" firstAttribute="top" secondItem="JVa-ke-voF" secondAttribute="bottom" constant="20" id="dmV-4D-Tjb"/>
+                            <constraint firstItem="swa-bg-HEK" firstAttribute="top" secondItem="HEt-5e-LKd" secondAttribute="bottom" constant="8" id="1hQ-dI-srt"/>
+                            <constraint firstItem="UBo-3k-ZLv" firstAttribute="top" secondItem="swa-bg-HEK" secondAttribute="bottom" constant="8" id="364-RH-NUU"/>
+                            <constraint firstItem="swa-bg-HEK" firstAttribute="leading" secondItem="3xA-cS-VHv" secondAttribute="leading" constant="8" id="CED-oJ-H2b"/>
+                            <constraint firstItem="HEt-5e-LKd" firstAttribute="leading" secondItem="3xA-cS-VHv" secondAttribute="leading" constant="8" id="Gt4-ef-UnC"/>
+                            <constraint firstItem="QPr-Ve-G33" firstAttribute="leading" secondItem="3xA-cS-VHv" secondAttribute="leading" constant="8" id="HFp-Of-js4"/>
+                            <constraint firstAttribute="trailing" secondItem="swa-bg-HEK" secondAttribute="trailing" constant="8" id="Iyk-uv-gL0"/>
+                            <constraint firstItem="Qnl-5R-A4e" firstAttribute="top" secondItem="JVa-ke-voF" secondAttribute="bottom" constant="20" id="QhM-fT-KRk"/>
+                            <constraint firstItem="JVa-ke-voF" firstAttribute="centerX" secondItem="3xA-cS-VHv" secondAttribute="centerX" id="URr-nw-O1J"/>
+                            <constraint firstItem="QPr-Ve-G33" firstAttribute="top" secondItem="8BW-M8-zlH" secondAttribute="bottom" constant="8" id="aeH-rY-ZWo"/>
+                            <constraint firstAttribute="trailing" secondItem="QPr-Ve-G33" secondAttribute="trailing" constant="8" id="apd-ol-w0i"/>
+                            <constraint firstItem="QPr-Ve-G33" firstAttribute="leading" secondItem="zeg-UH-7Cj" secondAttribute="trailing" constant="-100" id="c3l-rj-UFO"/>
+                            <constraint firstItem="QPr-Ve-G33" firstAttribute="centerX" secondItem="3xA-cS-VHv" secondAttribute="centerX" id="eQL-ZK-S0h"/>
+                            <constraint firstItem="HEt-5e-LKd" firstAttribute="top" secondItem="zeg-UH-7Cj" secondAttribute="bottom" constant="8" id="gOo-0y-1DV"/>
+                            <constraint firstAttribute="trailing" secondItem="HEt-5e-LKd" secondAttribute="trailing" constant="8" id="lEK-TT-dx1"/>
+                            <constraint firstItem="zeg-UH-7Cj" firstAttribute="top" secondItem="QPr-Ve-G33" secondAttribute="bottom" constant="8" id="vEU-oy-IEK"/>
+                            <constraint firstItem="UBo-3k-ZLv" firstAttribute="centerX" secondItem="3xA-cS-VHv" secondAttribute="centerX" id="wSu-2R-a8w"/>
                         </constraints>
                     </view>
                     <connections>
