@@ -13,6 +13,7 @@ class ItemDescriptionViewController: UIViewController {
     @IBOutlet weak var itemName: UILabel!
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var price: UILabel!
     
     var userImagePhoto = UIImage()
     
@@ -23,6 +24,7 @@ class ItemDescriptionViewController: UIViewController {
         self.itemName.text = myItem?.itemName
         self.userImage.image = userImagePhoto
         self.username.text = myItem!.name
+        self.price.text = "$"+String((myItem?.price)!)
         // Do any additional setup after loading the view.
     }
 

@@ -643,7 +643,7 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PpV-di-1sF">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PpV-di-1sF">
                                 <rect key="frame" x="0.0" y="364" width="600" height="236"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hI-rr-Co3">
@@ -652,15 +652,21 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cri-6J-nLj">
-                                        <rect key="frame" x="5" y="41" width="80" height="80"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cri-6J-nLj">
+                                        <rect key="frame" x="5" y="63" width="80" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="Nw5-QE-yRq"/>
                                             <constraint firstAttribute="height" constant="80" id="v8O-ee-Anb"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Seller Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ZY-rz-aOF">
-                                        <rect key="frame" x="93" y="41" width="126" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seller Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ZY-rz-aOF">
+                                        <rect key="frame" x="93" y="63" width="126" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8N-1G-lTB">
+                                        <rect key="frame" x="5" y="34" width="39" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -668,9 +674,15 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="3hI-rr-Co3" firstAttribute="top" secondItem="PpV-di-1sF" secondAttribute="top" constant="5" id="2cM-jt-5wm"/>
+                                    <constraint firstAttribute="bottom" secondItem="9ZY-rz-aOF" secondAttribute="bottom" constant="152" id="7R1-lB-FBR"/>
+                                    <constraint firstItem="9ZY-rz-aOF" firstAttribute="top" secondItem="PpV-di-1sF" secondAttribute="top" constant="63" id="GBa-JZ-fuT"/>
+                                    <constraint firstItem="9ZY-rz-aOF" firstAttribute="leading" secondItem="PpV-di-1sF" secondAttribute="leading" constant="93" id="HZ3-gA-Ao8"/>
+                                    <constraint firstItem="b8N-1G-lTB" firstAttribute="leading" secondItem="PpV-di-1sF" secondAttribute="leadingMargin" constant="-3" id="PiU-fU-f6Q"/>
                                     <constraint firstItem="9ZY-rz-aOF" firstAttribute="leading" secondItem="cri-6J-nLj" secondAttribute="trailing" constant="8" id="Tz0-xa-kjR"/>
                                     <constraint firstItem="3hI-rr-Co3" firstAttribute="leading" secondItem="PpV-di-1sF" secondAttribute="leading" constant="5" id="hbL-zl-Xbo"/>
-                                    <constraint firstItem="9ZY-rz-aOF" firstAttribute="top" secondItem="3hI-rr-Co3" secondAttribute="bottom" constant="13" id="p7S-9Q-S6n"/>
+                                    <constraint firstItem="cri-6J-nLj" firstAttribute="top" secondItem="b8N-1G-lTB" secondAttribute="bottom" constant="8" id="jj6-Mj-aC2"/>
+                                    <constraint firstItem="9ZY-rz-aOF" firstAttribute="top" secondItem="cri-6J-nLj" secondAttribute="top" id="qKL-dq-qpI"/>
+                                    <constraint firstAttribute="trailing" secondItem="9ZY-rz-aOF" secondAttribute="trailing" constant="381" id="qmQ-1u-cMA"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -687,6 +699,7 @@
                     </view>
                     <connections>
                         <outlet property="itemName" destination="3hI-rr-Co3" id="fzm-EM-sI0"/>
+                        <outlet property="price" destination="b8N-1G-lTB" id="YhJ-0g-BIc"/>
                         <outlet property="userImage" destination="cri-6J-nLj" id="Kp2-8e-FpY"/>
                         <outlet property="username" destination="9ZY-rz-aOF" id="dIz-MV-oJQ"/>
                     </connections>
