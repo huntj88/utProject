@@ -14,6 +14,7 @@ class MyProfileViewController: UIViewController ,UICollectionViewDelegate, UICol
     var userID:Int?
     var apiKey:String?
     
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var realName: UILabel!
     @IBOutlet weak var year: UILabel!
@@ -25,6 +26,7 @@ class MyProfileViewController: UIViewController ,UICollectionViewDelegate, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadingIndicator.startAnimating()
         profileImage.image = UIImage(named: "TempProfilePic")
         loadUserInfo()
         loadDataFromServer()
@@ -56,7 +58,10 @@ class MyProfileViewController: UIViewController ,UICollectionViewDelegate, UICol
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell : ItemCollectionViewCell = myListings.dequeueReusableCellWithReuseIdentifier("myItems", forIndexPath: indexPath) as! ItemCollectionViewCell
         cell.itemName.text = items[indexPath.row].itemName
-        cell.itemImage.image = UIImage(named: "TempItemPic")!
+        //cell.itemImage.image = UIImage(named: "TempItemPic")!
+        let imageName = items[indexPath.row].imageNames.characters.split{$0 == ","}.map(String.init)
+        
+        cell.itemImage.loadImageUsingUrlString("http://138.68.41.247:2996/items/image/"+imageName[0])
         return cell
     }
     
@@ -134,6 +139,7 @@ class MyProfileViewController: UIViewController ,UICollectionViewDelegate, UICol
             }
             dispatch_async(dispatch_get_main_queue()) {
                 self.myListings.reloadData()
+                self.loadingIndicator.stopAnimating()
             }
             
         }

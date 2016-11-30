@@ -155,11 +155,7 @@ class initialItemsCollectionViewController: UIViewController, UICollectionViewDa
         
         let imageName = items[indexPath.row].imageNames.characters.split{$0 == ","}.map(String.init)
         
-        if let url = NSURL(string: "http://138.68.41.247:2996/items/image/"+imageName[0]) {
-            if let data = NSData(contentsOfURL: url) {
-                cell.itemImage.image = UIImage(data: data)
-            }
-        }
+        cell.itemImage.loadImageUsingUrlString("http://138.68.41.247:2996/items/image/"+imageName[0])
         //print(items[indexPath.row].imageNames)
         return cell
     }

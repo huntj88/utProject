@@ -11,6 +11,6 @@ import UIKit
 class ItemCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var itemName: UILabel!
-    @IBOutlet weak var itemImage: UIImageView!
+    @IBOutlet weak var itemImage: AsyncImageView!
     
 }
