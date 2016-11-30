@@ -122,7 +122,9 @@ class MyProfileViewController: UIViewController ,UICollectionViewDelegate, UICol
                      //print("\(self.userID!)  "+self.apiKey!)
                      print(self.userID!)
                      print(self.apiKey!)*/
-                    let objectThing:item = item(name: (jsonItem["username"] as? String)!,itemID: (jsonItem["itemID"] as? Int)!,description: (jsonItem["itemDescription"] as? String)!,userID: (jsonItem["userID"] as? Int)!,categoryID: (jsonItem["categoryID"] as? Int)!,itemName: (jsonItem["itemName"] as? String)!,categoryName: (jsonItem["categoryName"] as? String)!,price: (jsonItem["price"] as? Double)!)
+                    
+                    let imageNames = (jsonItem["imageNames"] as? String) ?? ""
+                    let objectThing:item = item(name: (jsonItem["username"] as? String)!,itemID: (jsonItem["itemID"] as? Int)!,description: (jsonItem["itemDescription"] as? String)!,userID: (jsonItem["userID"] as? Int)!,categoryID: (jsonItem["categoryID"] as? Int)!,itemName: (jsonItem["itemName"] as? String)!,categoryName: (jsonItem["categoryName"] as? String)!,price: (jsonItem["price"] as? Double)!,imageNames: imageNames)
                     
                     self.items.append(objectThing)
                 }

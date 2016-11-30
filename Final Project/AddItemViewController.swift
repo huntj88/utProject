@@ -188,7 +188,6 @@ class AddItemViewController: UIViewController, UICollectionViewDataSource, UICol
     {
         
         let myUrl = NSURL(string: "http://138.68.41.247:2996/items/uploadImage");
-        //let myUrl = NSURL(string: "http://www.boredwear.com/utils/postImage.php");
         
         let request = NSMutableURLRequest(URL:myUrl!);
         request.HTTPMethod = "POST";

@@ -16,8 +16,9 @@ class item {
     var itemName: String = ""
     var categoryName: String = ""
     var price: Double = 0.0
+    var imageNames:String = ""
     
-    init(name: String, itemID:Int, description: String, userID: Int, categoryID: Int, itemName: String, categoryName: String, price:Double){
+    init(name: String, itemID:Int, description: String, userID: Int, categoryID: Int, itemName: String, categoryName: String, price:Double, imageNames:String){
         self.name = name
         self.itemID = itemID
         self.description = description
@@ -26,7 +27,7 @@ class item {
         self.itemName = itemName
         self.categoryName = categoryName
         self.price=price
-        
+        self.imageNames = imageNames
         
     }
 }
