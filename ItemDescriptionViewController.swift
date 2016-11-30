@@ -26,6 +26,12 @@ class ItemDescriptionViewController: UIViewController {
         self.username.text = myItem!.name
         self.price.text = "$"+String((myItem?.price)!)
         // Do any additional setup after loading the view.
+        
+        /*if let url = NSURL(string: "http://138.68.41.247:2996/items/image/da862d74-4363-44e9-baaf-004ebd2e575a.jpg") {
+            if let data = NSData(contentsOfURL: url) {
+                userImage.image = UIImage(data: data)
+            }        
+        }*/
     }
 
     override func didReceiveMemoryWarning() {

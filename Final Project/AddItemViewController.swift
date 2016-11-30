@@ -33,6 +33,7 @@ class AddItemViewController: UIViewController, UICollectionViewDataSource, UICol
     
     var userID:Int?
     var apiKey:String?
+    var numImagesFinishedUploading:Int = 0
     
     //userID
     //categoryID
@@ -154,9 +155,6 @@ class AddItemViewController: UIViewController, UICollectionViewDataSource, UICol
             //{
                 print(self.delegate)
                 self.delegate?.setRefresh()
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.navigationController?.popToRootViewControllerAnimated(true)
-                }
 
             
             //}
@@ -272,7 +270,6 @@ class AddItemViewController: UIViewController, UICollectionViewDataSource, UICol
     {
         
         let myUrl = NSURL(string: "http://138.68.41.247:2996/items/uploadImage");
-        //let myUrl = NSURL(string: "http://www.boredwear.com/utils/postImage.php");
         
         let request = NSMutableURLRequest(URL:myUrl!);
         request.HTTPMethod = "POST";
@@ -325,6 +322,14 @@ class AddItemViewController: UIViewController, UICollectionViewDataSource, UICol
             }catch
             {
                 print(error)
+            }
+            self.numImagesFinishedUploading+=1
+            
+            if self.numImagesFinishedUploading == self.selectedImagesArray.count
+            {
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.navigationController?.popToRootViewControllerAnimated(true)
+                }
             }
             
         }

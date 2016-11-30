@@ -111,7 +111,10 @@ class initialItemsCollectionViewController: UIViewController, UICollectionViewDa
                      //print("\(self.userID!)  "+self.apiKey!)
                      print(self.userID!)
                      print(self.apiKey!)*/
-                    let objectThing:item = item(name: (jsonItem["username"] as? String)!,itemID: (jsonItem["itemID"] as? Int)!,description: (jsonItem["itemDescription"] as? String)!,userID: (jsonItem["userID"] as? Int)!,categoryID: (jsonItem["categoryID"] as? Int)!,itemName: (jsonItem["itemName"] as? String)!,categoryName: (jsonItem["categoryName"] as? String)!,price: (jsonItem["price"] as? Double)!)
+                    
+                    let imageNames = (jsonItem["imageNames"] as? String) ?? ""
+                    
+                    let objectThing:item = item(name: (jsonItem["username"] as? String)!,itemID: (jsonItem["itemID"] as? Int)!,description: (jsonItem["itemDescription"] as? String)!,userID: (jsonItem["userID"] as? Int)!,categoryID: (jsonItem["categoryID"] as? Int)!,itemName: (jsonItem["itemName"] as? String)!,categoryName: (jsonItem["categoryName"] as? String)!,price: (jsonItem["price"] as? Double)!,imageNames: imageNames)
                     
                     self.items.append(objectThing)
                 }
@@ -148,7 +151,16 @@ class initialItemsCollectionViewController: UIViewController, UICollectionViewDa
         let cell:ItemCollectionViewCell = myCollectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ItemCollectionViewCell
         
         cell.itemName.text = items[indexPath.row].itemName
-        cell.itemImage.image = UIImage(named: "TempItemPic")
+        //cell.itemImage.image = UIImage(named: "TempItemPic")
+        
+        let imageName = items[indexPath.row].imageNames.characters.split{$0 == ","}.map(String.init)
+        
+        if let url = NSURL(string: "http://138.68.41.247:2996/items/image/"+imageName[0]) {
+            if let data = NSData(contentsOfURL: url) {
+                cell.itemImage.image = UIImage(data: data)
+            }
+        }
+        //print(items[indexPath.row].imageNames)
         return cell
     }
     
