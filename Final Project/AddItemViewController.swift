@@ -8,13 +8,25 @@
 
 import UIKit
 
+
+protocol RefreshProtocol {
+    func setRefresh()
+}
+
 class AddItemViewController: UIViewController {
 
     @IBOutlet weak var itemTitle: UITextField!
     @IBOutlet weak var itemDescription: UITextView!
     
+    var delegate:RefreshProtocol?
+    
     var userID:Int?
     var apiKey:String?
+    
+    //userID
+    //categoryID
+    //itemName
+    //itemDescription
     
     
     override func viewDidLoad() {
@@ -35,7 +47,7 @@ class AddItemViewController: UIViewController {
         let request = NSMutableURLRequest(URL: NSURL(string: "http://138.68.41.247:2996/items/add")!)
         request.HTTPMethod = "POST"
         //let postString = "email=huntj88@gmail.com&password=test"
-        let postString = "userID=\(userID!)&apiKey="+apiKey!+"&categoryID=1"
+        let postString = "userID=\(userID!)&apiKey="+apiKey!+"&categoryID=1&itemName="+itemTitle.text!+"&itemDescription="+itemDescription.text
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
             guard error == nil && data != nil else {                                                          // check for fundamental networking error
@@ -50,6 +62,20 @@ class AddItemViewController: UIViewController {
             
             
             let responseString = String(data: data!, encoding: NSUTF8StringEncoding)!
+            
+            print(responseString)
+            
+            if(responseString=="success")
+            {
+                print(self.delegate)
+                self.delegate?.setRefresh()
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.navigationController?.popToRootViewControllerAnimated(true)
+                }
+
+                
+            }
+            
             
             
         }

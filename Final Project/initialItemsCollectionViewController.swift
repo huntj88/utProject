@@ -9,9 +9,11 @@
 import UIKit
 
 private let reuseIdentifier = "Cell1"
-class initialItemsCollectionViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
+class initialItemsCollectionViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,RefreshProtocol {
 
     @IBOutlet weak var myCollectionView: UICollectionView!
+    
+    var refresh: Bool = false
     
     var userID:Int?
     var apiKey:String?
@@ -24,7 +26,58 @@ class initialItemsCollectionViewController: UIViewController,UICollectionViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         loadUserInfo()
+        loadDataFromServer()
+        
+        
+        myCollectionView.dataSource = self
+        myCollectionView.delegate = self
+    }
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        print(refresh)
+        if refresh == true
+        {
+            items.removeAll()
+            loadDataFromServer()
+            refresh = false
+        }
+    }
+    
+    func setRefresh() {
+        print("refresh set")
+        refresh=true
+    }
+    
+    @IBAction func addItemButton(sender: AnyObject) {
+        performSegueWithIdentifier("addItemSegue", sender: UICollectionViewCell())
+    }
+    
+    
+    func loadUserInfo()
+    {
+        
+        if let plist = Plist(name: "user") {
+            let dict = plist.getValuesInPlistFile()
+            if (dict!["userID"]! as? Int) != 0
+            {
+                userID = dict!["userID"] as? Int
+                apiKey = dict!["apiKey"] as? String
+                /*NSOperationQueue.mainQueue().addOperationWithBlock {
+                    [weak self] in
+                    self?.performSegueWithIdentifier("loginSeg", sender: self)
+                }*/
+            }
+        } else {
+            print("Unable to get Plist")
+        }
 
+        
+    }
+    
+    func loadDataFromServer()
+    {
         let request = NSMutableURLRequest(URL: NSURL(string: "http://138.68.41.247:2996/items/getByCategory")!)
         request.HTTPMethod = "POST"
         //let postString = "email=huntj88@gmail.com&password=test"
@@ -54,10 +107,10 @@ class initialItemsCollectionViewController: UIViewController,UICollectionViewDat
                 
                 if let jsonItem = json![i] as? [String: AnyObject] {
                     /*self.userID = jsonItem["userID"] as? Int
-                    self.apiKey = jsonItem["apiKey"] as? String
-                    //print("\(self.userID!)  "+self.apiKey!)
-                    print(self.userID!)
-                    print(self.apiKey!)*/
+                     self.apiKey = jsonItem["apiKey"] as? String
+                     //print("\(self.userID!)  "+self.apiKey!)
+                     print(self.userID!)
+                     print(self.apiKey!)*/
                     let objectThing:item = item(name: (jsonItem["username"] as? String)!,itemID: (jsonItem["itemID"] as? Int)!,description: (jsonItem["itemDescription"] as? String)!,userID: (jsonItem["userID"] as? Int)!,categoryID: (jsonItem["categoryID"] as? Int)!,itemName: (jsonItem["itemName"] as? String)!,categoryName: (jsonItem["categoryName"] as? String)!)
                     
                     self.items.append(objectThing)
@@ -78,30 +131,6 @@ class initialItemsCollectionViewController: UIViewController,UICollectionViewDat
         
         
         task.resume()
-        
-        myCollectionView.dataSource = self
-        myCollectionView.delegate = self
-    }
-    
-    func loadUserInfo()
-    {
-        
-        if let plist = Plist(name: "user") {
-            let dict = plist.getValuesInPlistFile()
-            if (dict!["userID"]! as? Int) != 0
-            {
-                userID = dict!["userID"] as? Int
-                apiKey = dict!["apiKey"] as? String
-                /*NSOperationQueue.mainQueue().addOperationWithBlock {
-                    [weak self] in
-                    self?.performSegueWithIdentifier("loginSeg", sender: self)
-                }*/
-            }
-        } else {
-            print("Unable to get Plist")
-        }
-
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -136,6 +165,11 @@ class initialItemsCollectionViewController: UIViewController,UICollectionViewDat
                 print("correct VC, ItemDescription Screen")
                 nextView.myItem = items[indexOfItem]
                 nextView.userImagePhoto = UIImage(named: "Background")!
+            }
+        }
+        else if segue.identifier == "addItemSegue" {
+            if let nextView: AddItemViewController = segue.destinationViewController as? AddItemViewController{
+                nextView.delegate = self
             }
         }
     }
