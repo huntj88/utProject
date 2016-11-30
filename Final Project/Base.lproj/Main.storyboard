@@ -830,6 +830,7 @@
                     </view>
                     <connections>
                         <outlet property="myCollectionView" destination="gpB-n1-bfY" id="mP5-c0-SaN"/>
+                        <segue destination="LYH-ZV-IYr" kind="show" identifier="toItemDescriptionView" id="WyJ-Fb-BUF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jdE-Tf-qCV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -912,4 +913,7 @@
     <resources>
         <image name="Background" width="1024" height="768"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="WyJ-Fb-BUF"/>
+    </inferredMetricsTieBreakers>
 </document>
