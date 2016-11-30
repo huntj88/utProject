@@ -15,6 +15,7 @@ class CategoriesViewController: UIViewController,UITableViewDataSource,UITableVi
     var userID:Int?
     var apiKey:String?
     var categories = [Category]()
+    var indexOfCategory:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,6 +106,11 @@ class CategoriesViewController: UIViewController,UITableViewDataSource,UITableVi
         return cell
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        indexOfCategory = indexPath.row
+        performSegueWithIdentifier("itemCategorySegue", sender: UICollectionViewCell())
+    }
+    
     func loadUserInfo()
     {
         
@@ -128,14 +134,11 @@ class CategoriesViewController: UIViewController,UITableViewDataSource,UITableVi
 
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
+        if segue.identifier == "itemCategorySegue" {
+            if let nextView: ItemCategoryViewController = segue.destinationViewController as? ItemCategoryViewController{
+                nextView.myCategory = categories[indexOfCategory]
+            }
+        }
     }
-    */
-
 }

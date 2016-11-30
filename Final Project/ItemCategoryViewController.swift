@@ -1,57 +1,39 @@
 //
-//  initialItemsCollectionViewController.swift
+//  ItemCategoryViewController.swift
 //  Final Project
 //
-//  Created by Choi, Jin W on 11/21/16.
+//  Created by Hunt, James V on 11/29/16.
 //  Copyright © 2016 MonkeyBrain. All rights reserved.
 //
 
 import UIKit
 
-private let reuseIdentifier = "Cell1"
-class initialItemsCollectionViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,RefreshProtocol {
+class ItemCategoryViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
 
     @IBOutlet weak var myCollectionView: UICollectionView!
     
-    var refresh: Bool = false
     
     var userID:Int?
     var apiKey:String?
     var items = [item]()
-    //var myCollectionView:UICollectionView?
-    var selectedItemName: String = ""
     var indexOfItem:Int = 0
-    
+    var myCategory:Category?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         loadUserInfo()
         loadDataFromServer()
         
         
         myCollectionView.dataSource = self
         myCollectionView.delegate = self
+        // Do any additional setup after loading the view.
     }
-    
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        print(refresh)
-        if refresh == true
-        {
-            items.removeAll()
-            loadDataFromServer()
-            refresh = false
-        }
-    }
-    
-    func setRefresh() {
-        print("refresh set")
-        refresh=true
-    }
-    
-    @IBAction func addItemButton(sender: AnyObject) {
-        performSegueWithIdentifier("addItemSegue", sender: UICollectionViewCell())
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     
@@ -65,23 +47,23 @@ class initialItemsCollectionViewController: UIViewController,UICollectionViewDat
                 userID = dict!["userID"] as? Int
                 apiKey = dict!["apiKey"] as? String
                 /*NSOperationQueue.mainQueue().addOperationWithBlock {
-                    [weak self] in
-                    self?.performSegueWithIdentifier("loginSeg", sender: self)
-                }*/
+                 [weak self] in
+                 self?.performSegueWithIdentifier("loginSeg", sender: self)
+                 }*/
             }
         } else {
             print("Unable to get Plist")
         }
-
+        
         
     }
     
     func loadDataFromServer()
     {
-        let request = NSMutableURLRequest(URL: NSURL(string: "http://138.68.41.247:2996/items/getAll")!)
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://138.68.41.247:2996/items/getByCategory")!)
         request.HTTPMethod = "POST"
         //let postString = "email=huntj88@gmail.com&password=test"
-        let postString = "userID=\(userID!)&apiKey="+apiKey!
+        let postString = "userID=\(userID!)&apiKey="+apiKey!+"&categoryID="+String((myCategory?.categoryID)!)
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
             guard error == nil && data != nil else {                                                          // check for fundamental networking error
@@ -132,20 +114,16 @@ class initialItemsCollectionViewController: UIViewController,UICollectionViewDat
         
         task.resume()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    
+        
         return items.count
     }
     
-
+    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell:ItemCollectionViewCell = myCollectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ItemCollectionViewCell
+        let cell:ItemCollectionViewCell = myCollectionView.dequeueReusableCellWithReuseIdentifier("categoryItemCell", forIndexPath: indexPath) as! ItemCollectionViewCell
         
         cell.itemName.text = items[indexPath.row].itemName
         return cell
@@ -153,10 +131,8 @@ class initialItemsCollectionViewController: UIViewController,UICollectionViewDat
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         // handle tap events
-        selectedItemName = items[indexPath.row].name
         indexOfItem = indexPath.row
         performSegueWithIdentifier("toItemDescriptionView", sender: UICollectionViewCell())
-        print("You selected cell #\(indexPath.item) named \(selectedItemName)!")
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
         if segue.identifier == "toItemDescriptionView" {
@@ -168,11 +144,18 @@ class initialItemsCollectionViewController: UIViewController,UICollectionViewDat
                 nextView.userImagePhoto = UIImage(named: "Background")!
             }
         }
-        else if segue.identifier == "addItemSegue" {
-            if let nextView: AddItemViewController = segue.destinationViewController as? AddItemViewController{
-                nextView.delegate = self
-            }
-        }
     }
+
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
 
 }
