@@ -831,11 +831,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="155" height="147"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EnK-n8-F65">
-                                                    <rect key="frame" x="0.0" y="0.0" width="155" height="147"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y9L-Xf-7gz">
+                                                    <rect key="frame" x="0.0" y="0.0" width="155" height="128"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOD-FC-Cjs">
-                                                    <rect key="frame" x="0.0" y="118" width="155" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOD-FC-Cjs">
+                                                    <rect key="frame" x="8" y="126" width="139" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="HWm-xI-Lbu"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -843,17 +846,16 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <color key="backgroundColor" red="0.1176470588" green="0.92156862750000001" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.40848781016726576" green="1" blue="0.50060114421040236" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="EnK-n8-F65" firstAttribute="centerX" secondItem="F4D-r1-4MC" secondAttribute="centerX" id="1po-8D-OlY"/>
-                                            <constraint firstItem="MOD-FC-Cjs" firstAttribute="centerX" secondItem="F4D-r1-4MC" secondAttribute="centerX" id="IzW-Ad-EjY"/>
-                                            <constraint firstItem="EnK-n8-F65" firstAttribute="width" secondItem="F4D-r1-4MC" secondAttribute="width" id="YPO-KK-SKz"/>
-                                            <constraint firstItem="MOD-FC-Cjs" firstAttribute="width" secondItem="F4D-r1-4MC" secondAttribute="width" id="a9j-UU-dGl"/>
-                                            <constraint firstItem="EnK-n8-F65" firstAttribute="centerY" secondItem="F4D-r1-4MC" secondAttribute="centerY" id="tXW-0p-Ee2"/>
-                                            <constraint firstItem="EnK-n8-F65" firstAttribute="height" secondItem="F4D-r1-4MC" secondAttribute="height" id="u4J-XB-eAi"/>
-                                            <constraint firstAttribute="bottom" secondItem="MOD-FC-Cjs" secondAttribute="bottom" constant="8" id="uE2-jf-4B6"/>
+                                            <constraint firstItem="y9L-Xf-7gz" firstAttribute="centerX" secondItem="MOD-FC-Cjs" secondAttribute="centerX" id="dSf-bM-Xeh"/>
+                                            <constraint firstAttribute="trailing" secondItem="y9L-Xf-7gz" secondAttribute="trailing" id="fdb-NM-yRz"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="y9L-Xf-7gz" secondAttribute="bottom" constant="11" id="l7B-q6-3pQ"/>
+                                            <constraint firstItem="y9L-Xf-7gz" firstAttribute="top" secondItem="F4D-r1-4MC" secondAttribute="top" id="pw7-KS-fLD"/>
+                                            <constraint firstItem="y9L-Xf-7gz" firstAttribute="leading" secondItem="F4D-r1-4MC" secondAttribute="leading" id="sLf-NW-4sv"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="itemImage" destination="y9L-Xf-7gz" id="RmL-mC-A6i"/>
                                             <outlet property="itemName" destination="MOD-FC-Cjs" id="AyJ-Yb-zVs"/>
                                         </connections>
                                     </collectionViewCell>
