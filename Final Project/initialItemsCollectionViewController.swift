@@ -148,6 +148,7 @@ class initialItemsCollectionViewController: UIViewController, UICollectionViewDa
         let cell:ItemCollectionViewCell = myCollectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ItemCollectionViewCell
         
         cell.itemName.text = items[indexPath.row].itemName
+        cell.itemImage.image = UIImage(named: "TempItemPic")
         return cell
     }
     
@@ -175,7 +176,7 @@ class initialItemsCollectionViewController: UIViewController, UICollectionViewDa
         }
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let width = collectionView.frame.width / 3 - 1
+        let width = collectionView.frame.width / 2 - 1
         
         return CGSizeMake(width, width)
     }

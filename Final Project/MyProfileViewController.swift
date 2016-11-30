@@ -11,6 +11,8 @@ import UIKit
 class MyProfileViewController: UIViewController ,UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     var items = [item]()
+    var userID:Int?
+    var apiKey:String?
     
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var realName: UILabel!
@@ -24,6 +26,8 @@ class MyProfileViewController: UIViewController ,UICollectionViewDelegate, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         profileImage.image = UIImage(named: "TempProfilePic")
+        loadUserInfo()
+        loadDataFromServer()
 
         // Do any additional setup after loading the view.
         myListings.dataSource = self
@@ -46,19 +50,97 @@ class MyProfileViewController: UIViewController ,UICollectionViewDelegate, UICol
     }
     */
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return items.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell : ItemCollectionViewCell = myListings.dequeueReusableCellWithReuseIdentifier("myItems", forIndexPath: indexPath) as! ItemCollectionViewCell
-        //cell.itemName.text = items[indexPath.row].itemName
+        cell.itemName.text = items[indexPath.row].itemName
         cell.itemImage.image = UIImage(named: "TempItemPic")!
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let width = collectionView.frame.width / 3
+        let width = collectionView.frame.width / 2 - 1
         
         return CGSizeMake(width, width)
+    }
+    
+    func loadUserInfo()
+    {
+        
+        if let plist = Plist(name: "user") {
+            let dict = plist.getValuesInPlistFile()
+            if (dict!["userID"]! as? Int) != 0
+            {
+                userID = dict!["userID"] as? Int
+                apiKey = dict!["apiKey"] as? String
+                /*NSOperationQueue.mainQueue().addOperationWithBlock {
+                 [weak self] in
+                 self?.performSegueWithIdentifier("loginSeg", sender: self)
+                 }*/
+            }
+        } else {
+            print("Unable to get Plist")
+        }
+        
+        
+    }
+    
+    func loadDataFromServer()
+    {
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://138.68.41.247:2996/items/getByUserID")!)
+        request.HTTPMethod = "POST"
+        //let postString = "email=huntj88@gmail.com&password=test"
+        let postString = "userID=\(userID!)&apiKey="+apiKey!+"&otherUserID=\(userID!)"
+        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
+            guard error == nil && data != nil else {                                                          // check for fundamental networking error
+                print("error=\(error)")
+                return
+            }
+            
+            if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {           // check for http errors
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(response)")
+            }
+            
+            
+            let responseString = String(data: data!, encoding: NSUTF8StringEncoding)!
+            
+            
+            let json: AnyObject? = responseString.parseJSONString
+            
+            var i = 0
+            
+            while(i<json?.count)
+            {
+                
+                if let jsonItem = json![i] as? [String: AnyObject] {
+                    /*self.userID = jsonItem["userID"] as? Int
+                     self.apiKey = jsonItem["apiKey"] as? String
+                     //print("\(self.userID!)  "+self.apiKey!)
+                     print(self.userID!)
+                     print(self.apiKey!)*/
+                    let objectThing:item = item(name: (jsonItem["username"] as? String)!,itemID: (jsonItem["itemID"] as? Int)!,description: (jsonItem["itemDescription"] as? String)!,userID: (jsonItem["userID"] as? Int)!,categoryID: (jsonItem["categoryID"] as? Int)!,itemName: (jsonItem["itemName"] as? String)!,categoryName: (jsonItem["categoryName"] as? String)!,price: (jsonItem["price"] as? Double)!)
+                    
+                    self.items.append(objectThing)
+                }
+                i+=1
+                print(self.items.count)
+                
+            }
+            dispatch_async(dispatch_get_main_queue()) {
+                self.myListings.reloadData()
+            }
+            
+        }
+        
+        
+        print(items.count)
+        
+        
+        
+        task.resume()
     }
 }
