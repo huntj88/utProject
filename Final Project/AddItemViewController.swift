@@ -126,7 +126,7 @@ class AddItemViewController: UIViewController, UICollectionViewDataSource, UICol
         let request = NSMutableURLRequest(URL: NSURL(string: "http://138.68.41.247:2996/items/add")!)
         request.HTTPMethod = "POST"
         //let postString = "email=huntj88@gmail.com&password=test"
-        let postString = "userID=\(userID!)&apiKey="+apiKey!+"&categoryID=1&itemName="+itemTitle.text!+"&itemDescription="+itemDescription.text+"&price="+price.text!
+        let postString = "userID=\(userID!)&apiKey="+apiKey!+"&categoryID="+String(selectedCategoryIndex)+"&itemName="+itemTitle.text!+"&itemDescription="+itemDescription.text+"&price="+price.text!
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
             guard error == nil && data != nil else {                                                          // check for fundamental networking error

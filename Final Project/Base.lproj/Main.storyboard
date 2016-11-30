@@ -479,10 +479,6 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <activityIndicatorView key="backgroundView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" id="4IZ-oa-SeE">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="321.5"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </activityIndicatorView>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="myItems" id="TH5-2v-BT9" customClass="ItemCollectionViewCell" customModule="Final_Project" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="173" height="169"/>
@@ -557,7 +553,6 @@
                     </toolbarItems>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="loadingIndicator" destination="4IZ-oa-SeE" id="Y7s-5R-rZC"/>
                         <outlet property="major" destination="lb6-sh-1TU" id="SRS-be-8z6"/>
                         <outlet property="myListings" destination="G1P-nb-CgQ" id="Mv8-51-7M9"/>
                         <outlet property="profileImage" destination="gBW-7C-eJb" id="L1p-Eq-Qx8"/>

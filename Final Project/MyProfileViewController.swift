@@ -14,7 +14,6 @@ class MyProfileViewController: UIViewController ,UICollectionViewDelegate, UICol
     var userID:Int?
     var apiKey:String?
     
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var realName: UILabel!
     @IBOutlet weak var year: UILabel!
@@ -26,7 +25,6 @@ class MyProfileViewController: UIViewController ,UICollectionViewDelegate, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadingIndicator.startAnimating()
         profileImage.image = UIImage(named: "TempProfilePic")
         loadUserInfo()
         loadDataFromServer()
@@ -139,7 +137,6 @@ class MyProfileViewController: UIViewController ,UICollectionViewDelegate, UICol
             }
             dispatch_async(dispatch_get_main_queue()) {
                 self.myListings.reloadData()
-                self.loadingIndicator.stopAnimating()
             }
             
         }
