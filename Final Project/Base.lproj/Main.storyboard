@@ -268,7 +268,7 @@
                                 </constraints>
                                 <items>
                                     <navigationItem id="xNQ-Wh-PpI">
-                                        <barButtonItem key="leftBarButtonItem" title="add shit" id="Ova-Qm-7U7">
+                                        <barButtonItem key="leftBarButtonItem" title="Add SHIT" id="Ova-Qm-7U7">
                                             <connections>
                                                 <action selector="addItemButton:" destination="guX-9g-hM5" id="8Wl-S7-gmA"/>
                                             </connections>
@@ -336,12 +336,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cg9-bP-h0K">
-                        <barButtonItem key="leftBarButtonItem" title="categories" id="ran-Wb-zI9">
+                        <barButtonItem key="leftBarButtonItem" title="Categories" id="ran-Wb-zI9">
                             <connections>
                                 <segue destination="8is-W7-3HX" kind="show" id="MH9-0j-aMY"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="my profile" id="AoH-rh-Rbe">
+                        <barButtonItem key="rightBarButtonItem" title="My Profile" id="AoH-rh-Rbe">
                             <connections>
                                 <segue destination="mP6-45-8i4" kind="show" id="rJD-Bb-nPU"/>
                             </connections>
@@ -685,8 +685,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="0H9-dF-Hfw"/>
                                 </constraints>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textView>
                         </subviews>
