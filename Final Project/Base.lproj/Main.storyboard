@@ -589,7 +589,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price $" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zeg-UH-7Cj">
-                                <rect key="frame" x="8" y="110" width="100" height="30"/>
+                                <rect key="frame" x="8" y="127" width="100" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="Fx6-Ae-Icx"/>
                                 </constraints>
@@ -604,7 +604,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Information about your listing here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HEt-5e-LKd">
-                                <rect key="frame" x="8" y="148" width="584" height="150"/>
+                                <rect key="frame" x="8" y="202" width="584" height="150"/>
                                 <color key="backgroundColor" red="0.0" green="0.92825885065819991" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="0H9-dF-Hfw"/>
@@ -615,7 +615,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UBo-3k-ZLv">
-                                <rect key="frame" x="214" y="464" width="172" height="30"/>
+                                <rect key="frame" x="214" y="518" width="172" height="30"/>
                                 <color key="backgroundColor" red="0.16862745098039217" green="1" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title=" Take photo with camera "/>
                                 <connections>
@@ -623,7 +623,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rBG-f6-c4S">
-                                <rect key="frame" x="216" y="504" width="168" height="30"/>
+                                <rect key="frame" x="216" y="558" width="168" height="30"/>
                                 <color key="backgroundColor" red="0.12941176470588237" green="1" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title=" Add from Photo Library "/>
                                 <connections>
@@ -631,7 +631,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="swa-bg-HEK">
-                                <rect key="frame" x="8" y="306" width="584" height="150"/>
+                                <rect key="frame" x="8" y="360" width="584" height="150"/>
                                 <color key="backgroundColor" red="0.11764705882352941" green="0.92156862745098034" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="soU-hr-ITD"/>
@@ -669,6 +669,25 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AxD-63-GaQ">
+                                <rect key="frame" x="247" y="102" width="344.5" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Ftz-bM-SRd"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="i4d-dy-rCy" id="tBe-5g-bEn"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Category : " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0jg-L8-29u" userLabel="Select Category :">
+                                <rect key="frame" x="110.5" y="102" width="136.5" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="136.5" id="ULD-f9-lRY"/>
+                                    <constraint firstAttribute="height" constant="100" id="s1i-fj-EyG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -680,19 +699,27 @@
                             <constraint firstItem="QPr-Ve-G33" firstAttribute="leading" secondItem="3xA-cS-VHv" secondAttribute="leading" constant="8" id="HFp-Of-js4"/>
                             <constraint firstAttribute="trailing" secondItem="swa-bg-HEK" secondAttribute="trailing" constant="8" id="Iyk-uv-gL0"/>
                             <constraint firstItem="rBG-f6-c4S" firstAttribute="centerX" secondItem="3xA-cS-VHv" secondAttribute="centerX" id="M9f-bn-ilJ"/>
+                            <constraint firstAttribute="trailing" secondItem="AxD-63-GaQ" secondAttribute="trailing" constant="8" id="MKa-CI-EU7"/>
                             <constraint firstItem="Qnl-5R-A4e" firstAttribute="top" secondItem="JVa-ke-voF" secondAttribute="bottom" constant="20" id="QhM-fT-KRk"/>
+                            <constraint firstItem="0jg-L8-29u" firstAttribute="leading" secondItem="zeg-UH-7Cj" secondAttribute="trailing" constant="2.5" id="Ta7-uH-6gx"/>
                             <constraint firstItem="JVa-ke-voF" firstAttribute="centerX" secondItem="3xA-cS-VHv" secondAttribute="centerX" id="URr-nw-O1J"/>
                             <constraint firstItem="QPr-Ve-G33" firstAttribute="top" secondItem="8BW-M8-zlH" secondAttribute="bottom" constant="8" id="aeH-rY-ZWo"/>
                             <constraint firstAttribute="trailing" secondItem="QPr-Ve-G33" secondAttribute="trailing" constant="8" id="apd-ol-w0i"/>
                             <constraint firstItem="QPr-Ve-G33" firstAttribute="leading" secondItem="zeg-UH-7Cj" secondAttribute="trailing" constant="-100" id="c3l-rj-UFO"/>
                             <constraint firstItem="QPr-Ve-G33" firstAttribute="centerX" secondItem="3xA-cS-VHv" secondAttribute="centerX" id="eQL-ZK-S0h"/>
-                            <constraint firstItem="HEt-5e-LKd" firstAttribute="top" secondItem="zeg-UH-7Cj" secondAttribute="bottom" constant="8" id="gOo-0y-1DV"/>
+                            <constraint firstItem="HEt-5e-LKd" firstAttribute="top" secondItem="zeg-UH-7Cj" secondAttribute="bottom" constant="26" id="gQJ-cD-0sl"/>
                             <constraint firstItem="UBo-3k-ZLv" firstAttribute="centerX" secondItem="3xA-cS-VHv" secondAttribute="centerX" id="kSB-tf-gDE"/>
                             <constraint firstAttribute="trailing" secondItem="HEt-5e-LKd" secondAttribute="trailing" constant="8" id="lEK-TT-dx1"/>
-                            <constraint firstItem="zeg-UH-7Cj" firstAttribute="top" secondItem="QPr-Ve-G33" secondAttribute="bottom" constant="8" id="vEU-oy-IEK"/>
+                            <constraint firstItem="AxD-63-GaQ" firstAttribute="top" secondItem="QPr-Ve-G33" secondAttribute="bottom" id="nT7-tQ-H1T"/>
+                            <constraint firstItem="HEt-5e-LKd" firstAttribute="top" secondItem="AxD-63-GaQ" secondAttribute="bottom" id="oVS-1n-5cz"/>
+                            <constraint firstItem="0jg-L8-29u" firstAttribute="centerY" secondItem="AxD-63-GaQ" secondAttribute="centerY" id="pAX-va-hO1"/>
+                            <constraint firstItem="HEt-5e-LKd" firstAttribute="top" secondItem="AxD-63-GaQ" secondAttribute="bottom" id="tPr-A4-J4l"/>
+                            <constraint firstItem="zeg-UH-7Cj" firstAttribute="top" secondItem="QPr-Ve-G33" secondAttribute="bottom" constant="25" id="vEU-oy-IEK"/>
+                            <constraint firstItem="AxD-63-GaQ" firstAttribute="leading" secondItem="0jg-L8-29u" secondAttribute="trailing" id="ya6-MO-Mfq"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="categoryPicker" destination="AxD-63-GaQ" id="cOK-Ff-kpF"/>
                         <outlet property="itemDescription" destination="HEt-5e-LKd" id="bIg-X4-ug8"/>
                         <outlet property="itemTitle" destination="QPr-Ve-G33" id="1Ne-Lk-x82"/>
                         <outlet property="photoCollectionView" destination="swa-bg-HEK" id="qy1-Sl-HAQ"/>
@@ -701,7 +728,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dG1-L9-jAt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="955" y="1224"/>
+            <point key="canvasLocation" x="952" y="1224"/>
         </scene>
         <!--Item Description View Controller-->
         <scene sceneID="Chq-Hf-EcO">

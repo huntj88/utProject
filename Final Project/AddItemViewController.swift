@@ -13,16 +13,19 @@ protocol RefreshProtocol {
     func setRefresh()
 }
 
-class AddItemViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate , UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout {
+class AddItemViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate , UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout, UIPickerViewDelegate, UIPickerViewDataSource {
 
     //MARK: Properties
     @IBOutlet weak var itemTitle: UITextField!
     @IBOutlet weak var itemDescription: UITextView!
     @IBOutlet weak var price: UITextField!
     
+    @IBOutlet weak var categoryPicker: UIPickerView!
 
     @IBOutlet weak var photoCollectionView: UICollectionView!
     
+    var categoryArray = [Category]()
+    var selectedCategoryIndex = 0
     
     var selectedImagesArray = [UIImage]()
     
@@ -39,11 +42,75 @@ class AddItemViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("hi")
+        loadUserInfo()
+        categoryPicker.delegate = self
+        categoryPicker.dataSource = self
         
         photoCollectionView.dataSource = self
         photoCollectionView.delegate = self
         // Do any additional setup after loading the view.
+        
+        
+        
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://138.68.41.247:2996/items/getCategories")!)
+        request.HTTPMethod = "POST"
+        //let postString = "email=huntj88@gmail.com&password=test"
+        let postString = "userID=\(userID!)&apiKey="+apiKey!
+        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
+            guard error == nil && data != nil else {                                                          // check for fundamental networking error
+                print("error=\(error)")
+                return
+            }
+            
+            if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {           // check for http errors
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(response)")
+            }
+            
+            
+            let responseString = String(data: data!, encoding: NSUTF8StringEncoding)!
+            
+            print(responseString)
+            
+            
+            let json: AnyObject? = responseString.parseJSONString
+            
+            var i = 0
+            
+            while(i<json?.count)
+            {
+                
+                if let jsonItem = json![i] as? [String: AnyObject] {
+                    /*self.userID = jsonItem["userID"] as? Int
+                     self.apiKey = jsonItem["apiKey"] as? String
+                     //print("\(self.userID!)  "+self.apiKey!)
+                     print(self.userID!)
+                     print(self.apiKey!)*/
+                    let objectThing:Category = Category(name: (jsonItem["categoryName"] as? String)!,categoryID: (jsonItem["categoryID"] as? Int)!)
+                    
+                    self.categoryArray.append(objectThing)
+                }
+                i+=1
+                print(self.categoryArray.count)
+            }
+            dispatch_async(dispatch_get_main_queue()) {
+                self.categoryPicker.reloadAllComponents()
+            }
+        }
+        
+        
+        print(categoryArray.count)
+        
+        
+        
+        task.resume()
+        
+        
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,7 +120,7 @@ class AddItemViewController: UIViewController, UICollectionViewDataSource, UICol
     
     @IBAction func submitItem(sender: AnyObject) {
         
-        loadUserInfo()
+        
         
         let request = NSMutableURLRequest(URL: NSURL(string: "http://138.68.41.247:2996/items/add")!)
         request.HTTPMethod = "POST"
@@ -177,12 +244,29 @@ class AddItemViewController: UIViewController, UICollectionViewDataSource, UICol
         cell.itemImage.image = selectedImagesArray[indexPath.row]
         return cell
     }
+    
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let width = collectionView.frame.width / 3 - 1
         
         return CGSizeMake(width, width)
     }
     
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return categoryArray[row].name
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        print("you have \(categoryArray.count) categories")
+        return categoryArray.count
+    }
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int{
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedCategoryIndex = row
+    }
     
     func myImageUploadRequest(imageIndex: Int,itemID: String)
     {
