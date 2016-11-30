@@ -600,6 +600,7 @@
                             </textField>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="swa-bg-HEK">
                                 <rect key="frame" x="8" y="306" width="584" height="150"/>
+                                <color key="backgroundColor" red="0.11764705882352941" green="0.92156862745098034" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="soU-hr-ITD"/>
                                 </constraints>
@@ -610,22 +611,29 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="jrt-Hq-k3b">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="jrt-Hq-k3b" customClass="ItemCollectionViewCell" customModule="Final_Project" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hzu-AU-QHi">
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                </imageView>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="Hzu-AU-QHi" firstAttribute="centerX" secondItem="jrt-Hq-k3b" secondAttribute="centerX" id="DNq-ph-JsM"/>
+                                            <constraint firstItem="Hzu-AU-QHi" firstAttribute="height" secondItem="jrt-Hq-k3b" secondAttribute="height" id="exY-xW-TBT"/>
+                                            <constraint firstItem="Hzu-AU-QHi" firstAttribute="centerY" secondItem="jrt-Hq-k3b" secondAttribute="centerY" id="kXy-nJ-uH9"/>
+                                            <constraint firstItem="Hzu-AU-QHi" firstAttribute="width" secondItem="jrt-Hq-k3b" secondAttribute="width" id="szT-ff-Jgl"/>
+                                        </constraints>
                                         <size key="customSize" width="150" height="150"/>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UBo-3k-ZLv">
-                                <rect key="frame" x="264" y="464" width="72" height="30"/>
-                                <state key="normal" title="Add photo"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVa-ke-voF">
                                 <rect key="frame" x="276" y="550" width="49" height="30"/>
                                 <state key="normal" title="Submit"/>
@@ -644,15 +652,33 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UBo-3k-ZLv">
+                                <rect key="frame" x="214" y="464" width="172" height="30"/>
+                                <color key="backgroundColor" red="0.16862745098039217" green="1" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title=" Take photo with camera "/>
+                                <connections>
+                                    <action selector="cameraAction:" destination="i4d-dy-rCy" eventType="touchUpInside" id="xlV-of-luC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rBG-f6-c4S">
+                                <rect key="frame" x="216" y="504" width="168" height="30"/>
+                                <color key="backgroundColor" red="0.12941176470588237" green="1" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title=" Add from Photo Library "/>
+                                <connections>
+                                    <action selector="photoLibraryAction:" destination="i4d-dy-rCy" eventType="touchUpInside" id="0qU-3M-Dlw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="rBG-f6-c4S" firstAttribute="top" secondItem="UBo-3k-ZLv" secondAttribute="bottom" constant="10" id="0aC-e6-NIq"/>
                             <constraint firstItem="swa-bg-HEK" firstAttribute="top" secondItem="HEt-5e-LKd" secondAttribute="bottom" constant="8" id="1hQ-dI-srt"/>
                             <constraint firstItem="UBo-3k-ZLv" firstAttribute="top" secondItem="swa-bg-HEK" secondAttribute="bottom" constant="8" id="364-RH-NUU"/>
                             <constraint firstItem="swa-bg-HEK" firstAttribute="leading" secondItem="3xA-cS-VHv" secondAttribute="leading" constant="8" id="CED-oJ-H2b"/>
                             <constraint firstItem="HEt-5e-LKd" firstAttribute="leading" secondItem="3xA-cS-VHv" secondAttribute="leading" constant="8" id="Gt4-ef-UnC"/>
                             <constraint firstItem="QPr-Ve-G33" firstAttribute="leading" secondItem="3xA-cS-VHv" secondAttribute="leading" constant="8" id="HFp-Of-js4"/>
                             <constraint firstAttribute="trailing" secondItem="swa-bg-HEK" secondAttribute="trailing" constant="8" id="Iyk-uv-gL0"/>
+                            <constraint firstItem="rBG-f6-c4S" firstAttribute="centerX" secondItem="3xA-cS-VHv" secondAttribute="centerX" id="M9f-bn-ilJ"/>
                             <constraint firstItem="Qnl-5R-A4e" firstAttribute="top" secondItem="JVa-ke-voF" secondAttribute="bottom" constant="20" id="QhM-fT-KRk"/>
                             <constraint firstItem="JVa-ke-voF" firstAttribute="centerX" secondItem="3xA-cS-VHv" secondAttribute="centerX" id="URr-nw-O1J"/>
                             <constraint firstItem="QPr-Ve-G33" firstAttribute="top" secondItem="8BW-M8-zlH" secondAttribute="bottom" constant="8" id="aeH-rY-ZWo"/>
@@ -660,20 +686,21 @@
                             <constraint firstItem="QPr-Ve-G33" firstAttribute="leading" secondItem="zeg-UH-7Cj" secondAttribute="trailing" constant="-100" id="c3l-rj-UFO"/>
                             <constraint firstItem="QPr-Ve-G33" firstAttribute="centerX" secondItem="3xA-cS-VHv" secondAttribute="centerX" id="eQL-ZK-S0h"/>
                             <constraint firstItem="HEt-5e-LKd" firstAttribute="top" secondItem="zeg-UH-7Cj" secondAttribute="bottom" constant="8" id="gOo-0y-1DV"/>
+                            <constraint firstItem="UBo-3k-ZLv" firstAttribute="centerX" secondItem="3xA-cS-VHv" secondAttribute="centerX" id="kSB-tf-gDE"/>
                             <constraint firstAttribute="trailing" secondItem="HEt-5e-LKd" secondAttribute="trailing" constant="8" id="lEK-TT-dx1"/>
                             <constraint firstItem="zeg-UH-7Cj" firstAttribute="top" secondItem="QPr-Ve-G33" secondAttribute="bottom" constant="8" id="vEU-oy-IEK"/>
-                            <constraint firstItem="UBo-3k-ZLv" firstAttribute="centerX" secondItem="3xA-cS-VHv" secondAttribute="centerX" id="wSu-2R-a8w"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="itemDescription" destination="HEt-5e-LKd" id="bIg-X4-ug8"/>
                         <outlet property="itemTitle" destination="QPr-Ve-G33" id="1Ne-Lk-x82"/>
+                        <outlet property="photoCollectionView" destination="swa-bg-HEK" id="qy1-Sl-HAQ"/>
                         <outlet property="price" destination="zeg-UH-7Cj" id="42C-rg-Vrk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dG1-L9-jAt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="956" y="1224"/>
+            <point key="canvasLocation" x="955" y="1224"/>
         </scene>
         <!--Item Description View Controller-->
         <scene sceneID="Chq-Hf-EcO">

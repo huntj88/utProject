@@ -13,11 +13,18 @@ protocol RefreshProtocol {
     func setRefresh()
 }
 
-class AddItemViewController: UIViewController {
+class AddItemViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate , UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    //MARK: Properties
     @IBOutlet weak var itemTitle: UITextField!
     @IBOutlet weak var itemDescription: UITextView!
     @IBOutlet weak var price: UITextField!
+    
+
+    @IBOutlet weak var photoCollectionView: UICollectionView!
+    
+    
+    var selectedImagesArray = [UIImage]()
     
     var delegate:RefreshProtocol?
     
@@ -32,7 +39,8 @@ class AddItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        photoCollectionView.reloadData()
+        print("hi")
         // Do any additional setup after loading the view.
     }
 
@@ -119,5 +127,44 @@ class AddItemViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    @IBAction func cameraAction(sender: UIButton) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .Camera
+        
+        presentViewController(picker, animated: true, completion: nil)
+    }
+    @IBAction func photoLibraryAction(sender: UIButton) {
+        print("photo!")
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .PhotoLibrary
+        
+        presentViewController(picker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        //selecting image form photo library and appending it to selectedImagesArray
+        print("Hello")
+        var currentImage : UIImage?
+        currentImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        selectedImagesArray.append(currentImage!)
+        photoCollectionView.reloadData()
+        dismissViewControllerAnimated(true, completion: nil)
+        print("you have added \(currentImage) and your array is \(selectedImagesArray.count)")
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return selectedImagesArray.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell : ItemCollectionViewCell = photoCollectionView.dequeueReusableCellWithReuseIdentifier("takenPhotos", forIndexPath: indexPath) as! ItemCollectionViewCell
+        
+        cell.itemImage.image = selectedImagesArray[indexPath.row]
+        photoCollectionView.reloadData()
+        return cell
+        
+    }
 }
