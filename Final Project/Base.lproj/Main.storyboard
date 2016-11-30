@@ -578,25 +578,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Listing title here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QPr-Ve-G33">
+                                <rect key="frame" x="8" y="72" width="584" height="30"/>
+                                <color key="backgroundColor" red="0.11764705882352941" green="0.92156862745098034" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
+                                <accessibility key="accessibilityConfiguration" hint="Title"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="YSb-s6-J3h"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price $" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zeg-UH-7Cj">
                                 <rect key="frame" x="8" y="110" width="100" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="Fx6-Ae-Icx"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Information about your listing here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HEt-5e-LKd">
-                                <rect key="frame" x="8" y="148" width="584" height="150"/>
-                                <color key="backgroundColor" red="0.0" green="0.92825885065819991" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="0H9-dF-Hfw"/>
-                                    <constraint firstAttribute="width" constant="584" id="qj6-HO-e9x"/>
-                                </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="swa-bg-HEK">
                                 <rect key="frame" x="8" y="306" width="584" height="150"/>
                                 <constraints>
@@ -632,16 +632,17 @@
                                     <action selector="submitItem:" destination="i4d-dy-rCy" eventType="touchUpInside" id="Au2-UA-3sI"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Listing title here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QPr-Ve-G33">
-                                <rect key="frame" x="8" y="72" width="584" height="30"/>
-                                <color key="backgroundColor" red="0.11764705882352941" green="0.92156862745098034" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
-                                <accessibility key="accessibilityConfiguration" hint="Title"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Information about your listing here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HEt-5e-LKd">
+                                <rect key="frame" x="8" y="148" width="584" height="150"/>
+                                <color key="backgroundColor" red="0.0" green="0.92825885065819991" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="YSb-s6-J3h"/>
+                                    <constraint firstAttribute="height" constant="150" id="0H9-dF-Hfw"/>
+                                    <constraint firstAttribute="width" constant="584" id="qj6-HO-e9x"/>
                                 </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
