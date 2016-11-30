@@ -269,7 +269,7 @@
                                     <navigationItem id="xNQ-Wh-PpI">
                                         <barButtonItem key="leftBarButtonItem" title="add shit" id="Ova-Qm-7U7">
                                             <connections>
-                                                <segue destination="i4d-dy-rCy" kind="show" id="6sk-LM-ET1"/>
+                                                <action selector="addItemButton:" destination="guX-9g-hM5" id="8Wl-S7-gmA"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -355,6 +355,7 @@
                     <connections>
                         <outlet property="myCollectionView" destination="ifd-Qq-I6G" id="Cfr-7E-ZWG"/>
                         <segue destination="LYH-ZV-IYr" kind="show" identifier="toItemDescriptionView" id="L1o-uh-hNj"/>
+                        <segue destination="i4d-dy-rCy" kind="show" identifier="addItemSegue" id="LeM-Sj-1fq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="16A-Vx-ISO" userLabel="First Responder" sceneMemberID="firstResponder"/>
