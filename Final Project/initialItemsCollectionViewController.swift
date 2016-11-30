@@ -18,6 +18,7 @@ class initialItemsCollectionViewController: UIViewController,UICollectionViewDat
     var items = [item]()
     //var myCollectionView:UICollectionView?
     var selectedItemName: String = ""
+    var indexOfItem:Int = 0
     
     
     override func viewDidLoad() {
@@ -57,7 +58,7 @@ class initialItemsCollectionViewController: UIViewController,UICollectionViewDat
                     //print("\(self.userID!)  "+self.apiKey!)
                     print(self.userID!)
                     print(self.apiKey!)*/
-                    let objectThing:item = item(name: (jsonItem["itemName"] as? String)!,itemID: (jsonItem["itemID"] as? Int)!,description: (jsonItem["itemDescription"] as? String)!,userID: (jsonItem["userID"] as? Int)!)
+                    let objectThing:item = item(name: (jsonItem["username"] as? String)!,itemID: (jsonItem["itemID"] as? Int)!,description: (jsonItem["itemDescription"] as? String)!,userID: (jsonItem["userID"] as? Int)!,categoryID: (jsonItem["categoryID"] as? Int)!,itemName: (jsonItem["itemName"] as? String)!,categoryName: (jsonItem["categoryName"] as? String)!)
                     
                     self.items.append(objectThing)
                 }
@@ -117,13 +118,14 @@ class initialItemsCollectionViewController: UIViewController,UICollectionViewDat
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell:ItemCollectionViewCell = myCollectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ItemCollectionViewCell
         
-        cell.itemName.text = items[indexPath.row].name
+        cell.itemName.text = items[indexPath.row].itemName
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         // handle tap events
         selectedItemName = items[indexPath.row].name
+        indexOfItem = indexPath.row
         performSegueWithIdentifier("toItemDescriptionView", sender: UICollectionViewCell())
         print("You selected cell #\(indexPath.item) named \(selectedItemName)!")
     }
@@ -132,8 +134,7 @@ class initialItemsCollectionViewController: UIViewController,UICollectionViewDat
             print("toItemDescriptionSeg executed!")
             if let nextView: ItemDescriptionViewController = segue.destinationViewController as? ItemDescriptionViewController{
                 print("correct VC, ItemDescription Screen")
-                nextView.itemText = self.selectedItemName
-                nextView.userNameText = "Username of the seller"
+                nextView.myItem = items[indexOfItem]
                 nextView.userImagePhoto = UIImage(named: "Background")!
             }
         }

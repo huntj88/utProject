@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D676BB11DEE5240004D6E03 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D676BB01DEE5240004D6E03 /* AddItemViewController.swift */; };
 		6D9B1E821DE3F90E00A5547C /* user.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D9B1E811DE3F90E00A5547C /* user.plist */; };
 		6D9B1E841DE3F95000A5547C /* plist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B1E831DE3F95000A5547C /* plist.swift */; };
 		6DDD2FBC1DECF5AF006034EF /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDD2FBB1DECF5AF006034EF /* ItemCollectionViewCell.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6D676BB01DEE5240004D6E03 /* AddItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		6D9B1E811DE3F90E00A5547C /* user.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = user.plist; sourceTree = "<group>"; };
 		6D9B1E831DE3F95000A5547C /* plist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = plist.swift; sourceTree = "<group>"; };
 		6DDD2FBB1DECF5AF006034EF /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				6D9B1E811DE3F90E00A5547C /* user.plist */,
 				732CE97D1DE3C11B00927D73 /* SignUpViewController.swift */,
 				6DDD2FC11DED016E006034EF /* Category.swift */,
+				6D676BB01DEE5240004D6E03 /* AddItemViewController.swift */,
 				6DDD2FC31DED025D006034EF /* CategoryTableViewCell.swift */,
 				732CE97B1DE3AC8300927D73 /* ItemDescriptionViewController.swift */,
 				6DDD2FBB1DECF5AF006034EF /* ItemCollectionViewCell.swift */,
@@ -301,6 +304,7 @@
 				6DDD2FBE1DECFEF8006034EF /* CategoriesViewController.swift in Sources */,
 				732CE97C1DE3AC8300927D73 /* ItemDescriptionViewController.swift in Sources */,
 				732201891DE40FA000DF67FC /* item.swift in Sources */,
+				6D676BB11DEE5240004D6E03 /* AddItemViewController.swift in Sources */,
 				6D9B1E841DE3F95000A5547C /* plist.swift in Sources */,
 				73B1848D1DDAC3CD00DE8832 /* Final_Project.xcdatamodeld in Sources */,
 				73B184871DDAC3CD00DE8832 /* ViewController.swift in Sources */,

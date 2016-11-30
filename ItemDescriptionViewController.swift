@@ -14,14 +14,15 @@ class ItemDescriptionViewController: UIViewController {
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var userImage: UIImageView!
     
-    var itemText = ""
-    var userNameText = ""
     var userImagePhoto = UIImage()
+    
+    var myItem:item?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.itemName.text = itemText
+        self.itemName.text = myItem?.itemName
         self.userImage.image = userImagePhoto
+        self.username.text = myItem!.name
         // Do any additional setup after loading the view.
     }
 
