@@ -150,6 +150,16 @@ class ItemCategoryViewController: UIViewController, UICollectionViewDataSource, 
                 nextView.userImagePhoto = UIImage(named: "Background")!
             }
         }
+        if segue.identifier == "toOneOfMyItems" {
+            print("toOneOfMyItems executed!")
+            if let nextView: ItemDescriptionViewController = segue.destinationViewController as? ItemDescriptionViewController{
+                print("correct VC, ItemDescription Screen")
+                nextView.myItem = items[indexOfItem]
+                //print(items[indexOfItem].categoryID)
+                nextView.userImagePhoto = UIImage(named: "Background")!
+            }
+        }
+
     }
 
     
