@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		6D0F7EBE1DF4FF1C00D7CE6A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0F7EBD1DF4FF1C00D7CE6A /* SettingsViewController.swift */; };
 		6D0F7EC01DF5057800D7CE6A /* Double+format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0F7EBF1DF5057800D7CE6A /* Double+format.swift */; };
+		6D0F7EC41DF5133700D7CE6A /* ViewController+stuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0F7EC31DF5133700D7CE6A /* ViewController+stuff.swift */; };
 		6D676BB11DEE5240004D6E03 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D676BB01DEE5240004D6E03 /* AddItemViewController.swift */; };
 		6D676BBD1DEE87CD004D6E03 /* ItemCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D676BBC1DEE87CD004D6E03 /* ItemCategoryViewController.swift */; };
 		6D676BC11DEED826004D6E03 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D676BC01DEED826004D6E03 /* AsyncImageView.swift */; };
-		6D9B1E821DE3F90E00A5547C /* user.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D9B1E811DE3F90E00A5547C /* user.plist */; };
 		6D9B1E841DE3F95000A5547C /* plist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B1E831DE3F95000A5547C /* plist.swift */; };
 		6DDD2FBC1DECF5AF006034EF /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDD2FBB1DECF5AF006034EF /* ItemCollectionViewCell.swift */; };
 		6DDD2FBE1DECFEF8006034EF /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDD2FBD1DECFEF8006034EF /* CategoriesViewController.swift */; };
@@ -55,10 +55,10 @@
 /* Begin PBXFileReference section */
 		6D0F7EBD1DF4FF1C00D7CE6A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		6D0F7EBF1DF5057800D7CE6A /* Double+format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+format.swift"; sourceTree = "<group>"; };
+		6D0F7EC31DF5133700D7CE6A /* ViewController+stuff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+stuff.swift"; sourceTree = "<group>"; };
 		6D676BB01DEE5240004D6E03 /* AddItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		6D676BBC1DEE87CD004D6E03 /* ItemCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCategoryViewController.swift; sourceTree = "<group>"; };
 		6D676BC01DEED826004D6E03 /* AsyncImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
-		6D9B1E811DE3F90E00A5547C /* user.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = user.plist; sourceTree = "<group>"; };
 		6D9B1E831DE3F95000A5547C /* plist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = plist.swift; sourceTree = "<group>"; };
 		6DDD2FBB1DECF5AF006034EF /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		6DDD2FBD1DECFEF8006034EF /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
@@ -141,7 +141,6 @@
 				73B184881DDAC3CD00DE8832 /* Main.storyboard */,
 				73BCF7DF1DEE64B1003C85C3 /* MyProfileViewController.swift */,
 				732201861DE4091300DF67FC /* initialItemsCollectionViewController.swift */,
-				6D9B1E811DE3F90E00A5547C /* user.plist */,
 				732CE97D1DE3C11B00927D73 /* SignUpViewController.swift */,
 				6D676BBC1DEE87CD004D6E03 /* ItemCategoryViewController.swift */,
 				6DDD2FC11DED016E006034EF /* Category.swift */,
@@ -155,6 +154,7 @@
 				D2C2A7DB1DE3BC3400E8172A /* String+json.swift */,
 				6DDD2FBD1DECFEF8006034EF /* CategoriesViewController.swift */,
 				732201881DE40FA000DF67FC /* item.swift */,
+				6D0F7EC31DF5133700D7CE6A /* ViewController+stuff.swift */,
 				6D9B1E831DE3F95000A5547C /* plist.swift */,
 				73B1848E1DDAC3CD00DE8832 /* Assets.xcassets */,
 				73B184901DDAC3CD00DE8832 /* LaunchScreen.storyboard */,
@@ -289,7 +289,6 @@
 				73B184921DDAC3CD00DE8832 /* LaunchScreen.storyboard in Resources */,
 				73B1848F1DDAC3CD00DE8832 /* Assets.xcassets in Resources */,
 				73B1848A1DDAC3CD00DE8832 /* Main.storyboard in Resources */,
-				6D9B1E821DE3F90E00A5547C /* user.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,6 +315,7 @@
 			files = (
 				732CE97E1DE3C11B00927D73 /* SignUpViewController.swift in Sources */,
 				6DDD2FBC1DECF5AF006034EF /* ItemCollectionViewCell.swift in Sources */,
+				6D0F7EC41DF5133700D7CE6A /* ViewController+stuff.swift in Sources */,
 				6D676BBD1DEE87CD004D6E03 /* ItemCategoryViewController.swift in Sources */,
 				6DDD2FBE1DECFEF8006034EF /* CategoriesViewController.swift in Sources */,
 				732CE97C1DE3AC8300927D73 /* ItemDescriptionViewController.swift in Sources */,

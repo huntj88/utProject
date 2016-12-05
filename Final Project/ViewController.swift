@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     }
     override func viewWillAppear(animated: Bool) {
         
-        if let plist = Plist(name: "user") {
+        /*if let plist = Plist(name: "user") {
             let dict = plist.getValuesInPlistFile()
             if (dict!["userID"]! as? Int) != 0
             {
@@ -37,6 +37,16 @@ class ViewController: UIViewController {
             }
         } else {
             print("Unable to get Plist")
+        }*/
+        userID = getUserID()
+        apiKey = getApiKey()
+        
+        if(userID != 0)
+        {
+            NSOperationQueue.mainQueue().addOperationWithBlock {
+                [weak self] in
+                self?.performSegueWithIdentifier("loginSeg", sender: self)
+            }
         }
     }
 
@@ -76,13 +86,14 @@ class ViewController: UIViewController {
                     {
                         self.userID = item["userID"] as? Int
                         self.apiKey = item["apiKey"] as? String
+                        self.saveInfo((item["userID"] as? Int)!, apiKey: (item["apiKey"] as? String)!)
                         //print("\(self.userID!)  "+self.apiKey!)
                         print(self.userID!)
                         print(self.apiKey!)
                         
                         
                         //1
-                        if let plist = Plist(name: "user") {
+                        /*if let plist = Plist(name: "user") {
                             //2
                             let dict = plist.getMutablePlistFile()!
                             dict["userID"] = self.userID!
@@ -97,7 +108,7 @@ class ViewController: UIViewController {
                             print(plist.getValuesInPlistFile())
                         } else {
                             print("Unable to get Plist")
-                        }
+                        }*/
                         
                         self.performSegueWithIdentifier("loginSeg", sender: nil)
                 }
@@ -117,7 +128,7 @@ class ViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
         if segue.identifier == "loginSeg" {
             print("gen")
-            if let nextView: initialItemScreenCollectionViewController = segue.destinationViewController as? initialItemScreenCollectionViewController{
+            if let _: initialItemScreenCollectionViewController = segue.destinationViewController as? initialItemScreenCollectionViewController{
                 print("correct VC, second screen")
                 //nextVC.incomingText = self.input.text!
                 

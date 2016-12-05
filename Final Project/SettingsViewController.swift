@@ -37,23 +37,7 @@ class SettingsViewController: UIViewController {
         NSOperationQueue.mainQueue().addOperationWithBlock
             {
                 
-                //1
-                if let plist = Plist(name: "user") {
-                    //2
-                    let dict = plist.getMutablePlistFile()!
-                    dict["userID"] = 0
-                    dict["apiKey"] = ""
-                    do {
-                        try plist.addValuesToPlistFile(dict)
-                    } catch {
-                        print(error)
-                    }
-                    //4
-                    print("woo")
-                    print(plist.getValuesInPlistFile())
-                } else {
-                    print("Unable to get Plist")
-                }
+                self.logoutUser()
                 
                 self.performSegueWithIdentifier("toLogin", sender: nil)
         }
@@ -63,7 +47,7 @@ class SettingsViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
         if segue.identifier == "toLogin" {
             print("gen")
-            if let nextView: ViewController = segue.destinationViewController as? ViewController{
+            if let _: ViewController = segue.destinationViewController as? ViewController{
                 print("correct VC, Login Sreen")
                 //nextVC.incomingText = self.input.text!
             }
