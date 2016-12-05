@@ -807,6 +807,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5sL-kW-Xvf">
                                 <rect key="frame" x="92" y="331" width="97" height="30"/>
                                 <state key="normal" title="Contact Seller"/>
+                                <connections>
+                                    <action selector="showEmail:" destination="LYH-ZV-IYr" eventType="touchUpInside" id="jek-4n-P9v"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OLa-GF-UED">
                                 <rect key="frame" x="8" y="376" width="584" height="216"/>
@@ -853,6 +856,12 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="27X-Vc-49z">
+                                <rect key="frame" x="197" y="335" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -879,6 +888,7 @@
                     </view>
                     <toolbarItems/>
                     <connections>
+                        <outlet property="email" destination="27X-Vc-49z" id="wmB-rf-O3M"/>
                         <outlet property="itemDescription" destination="OLa-GF-UED" id="LD0-2j-Qfy"/>
                         <outlet property="itemName" destination="3hI-rr-Co3" id="fzm-EM-sI0"/>
                         <outlet property="myCollectionView" destination="mxT-Id-uST" id="S98-YN-8eM"/>
