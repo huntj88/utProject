@@ -204,6 +204,7 @@ class SignUpViewController: UIViewController, UICollectionViewDelegate , UIImage
         var currentImage : UIImage?
         currentImage = info[UIImagePickerControllerOriginalImage] as? UIImage
         profilePic.image = currentImage
+        myImageUploadRequest()
         dismissViewControllerAnimated(true, completion: nil)
         print("you have added a profile photo")
     }
