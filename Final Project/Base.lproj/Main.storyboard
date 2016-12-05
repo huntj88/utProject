@@ -773,7 +773,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="itemDescriptionImageCell" id="XbD-Rl-IPB" customClass="ItemCollectionViewCell" customModule="Final_Project" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="111.5" width="150" height="141"/>
+                                        <rect key="frame" x="0.0" y="89.5" width="150" height="141"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="141"/>
@@ -1053,6 +1053,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="3gZ-Up-daB"/>
-        <segue reference="L1o-uh-hNj"/>
+        <segue reference="nqq-bI-xod"/>
     </inferredMetricsTieBreakers>
 </document>
