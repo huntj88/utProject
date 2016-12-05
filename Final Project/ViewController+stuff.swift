@@ -95,6 +95,37 @@ extension UIViewController{
         //return info[0].valueForKey("userID")
     }
     
+    
+    func getUserImage() -> String {
+        var info = [NSManagedObject]()
+        let appDelegate =
+            UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        //2
+        let fetchRequest = NSFetchRequest(entityName: "UserInfo")
+        
+        //3
+        do {
+            let results =
+                try managedContext.executeFetchRequest(fetchRequest)
+            info = results as! [NSManagedObject]
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+            return ""
+        }
+        
+        if(info.count==0)
+        {
+            return ""
+        }
+        
+        let oneInfo = info[0]
+        return oneInfo.valueForKey("imageName") as! String
+        //return info[0].valueForKey("userID")
+    }
+    
     func logoutUser()
     {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -105,11 +136,19 @@ extension UIViewController{
         do
         {
             let results = try managedContext.executeFetchRequest(fetchRequest)
+            
             for managedObject in results
             {
                 let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
                 managedContext.deleteObject(managedObjectData)
             }
+            
+            do {
+                try managedContext.save()
+            } catch let error as NSError  {
+                print("Could not save \(error), \(error.userInfo)")
+            }
+
         } catch let error as NSError {
             print("Detele all data error : \(error) \(error.userInfo)")
         }

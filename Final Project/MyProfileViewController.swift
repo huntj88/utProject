@@ -26,8 +26,8 @@ class MyProfileViewController: UIViewController ,UICollectionViewDelegate, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        profileImage.image = UIImage(named: "TempProfilePic")
-        //profileImage.image.loadImageUsingUrlString("http://138.68.41.247:2996/items/image/"+imageName[0])
+        //profileImage.image = UIImage(named: "TempProfilePic")
+        profileImage.loadImageUsingUrlString("http://138.68.41.247:2996/items/image/"+getUserImage())
         userID = getUserID()
         apiKey = getApiKey()
         loadDataFromServer()
