@@ -9,7 +9,8 @@
 import UIKit
 import CoreData
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UICollectionViewDelegate , UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     //MARK: Properties
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var username: UITextField!
@@ -19,6 +20,8 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var city: UITextField!
     @IBOutlet weak var zipCode: UITextField!
     @IBOutlet weak var fullName: UITextField!
+    @IBOutlet weak var profilePic: UIImageView!
+    
     
     var userID:Int?
     var apiKey:String?
