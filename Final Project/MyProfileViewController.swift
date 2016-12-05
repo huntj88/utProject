@@ -17,8 +17,7 @@ class MyProfileViewController: UIViewController ,UICollectionViewDelegate, UICol
     
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var realName: UILabel!
-    @IBOutlet weak var year: UILabel!
-    @IBOutlet weak var major: UILabel!
+
 
     @IBOutlet weak var profileImage: AsyncImageView!
     
