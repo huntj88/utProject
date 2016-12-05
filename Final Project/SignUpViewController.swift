@@ -30,6 +30,7 @@ class SignUpViewController: UIViewController, UICollectionViewDelegate , UIImage
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        profilePic.image = UIImage(named: "Smiley")
 
         // Do any additional setup after loading the view.
     }
@@ -110,14 +111,14 @@ class SignUpViewController: UIViewController, UICollectionViewDelegate , UIImage
         
         presentViewController(picker, animated: true, completion: nil)
     }
-    /*@IBAction func photoLibraryAction(sender: UIButton) {
+    @IBAction func photoLibraryAction(sender: UIButton) {
         print("Pressed photolibrary Button!")
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.sourceType = .PhotoLibrary
         
         presentViewController(picker, animated: true, completion: nil)
-    }*/
+    }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         //selecting image form photo library and appending it to selectedImagesArray
