@@ -1024,11 +1024,46 @@
                         <outlet property="price" destination="b8N-1G-lTB" id="YhJ-0g-BIc"/>
                         <outlet property="userImage" destination="cri-6J-nLj" id="Kp2-8e-FpY"/>
                         <outlet property="username" destination="9ZY-rz-aOF" id="dIz-MV-oJQ"/>
+                        <segue destination="O50-oG-HgZ" kind="popoverPresentation" identifier="toSelectedItemImage" popoverAnchorView="MRu-Ou-gjB" id="Oue-Vv-K7y">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FVT-sF-GE5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1579" y="1560"/>
+        </scene>
+        <!--Selected Image-->
+        <scene sceneID="ueh-A1-PVk">
+            <objects>
+                <viewController id="O50-oG-HgZ" customClass="SelectedImage" customModule="Final_Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CJA-0X-fyf"/>
+                        <viewControllerLayoutGuide type="bottom" id="fKV-QA-bRP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TcA-G1-NcE">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Esh-Xw-SNC">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Esh-Xw-SNC" firstAttribute="centerY" secondItem="TcA-G1-NcE" secondAttribute="centerY" id="Juv-Yg-O0k"/>
+                            <constraint firstItem="Esh-Xw-SNC" firstAttribute="height" secondItem="TcA-G1-NcE" secondAttribute="height" id="YLe-nA-RzP"/>
+                            <constraint firstItem="Esh-Xw-SNC" firstAttribute="centerX" secondItem="TcA-G1-NcE" secondAttribute="centerX" id="ZjK-C9-630"/>
+                            <constraint firstItem="Esh-Xw-SNC" firstAttribute="width" secondItem="TcA-G1-NcE" secondAttribute="width" id="hAU-fv-qG9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageDisplay" destination="Esh-Xw-SNC" id="mxs-Hc-L2G"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f62-gl-sMO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2242" y="1560"/>
         </scene>
         <!--Item Category View Controller-->
         <scene sceneID="kcz-EP-J6A">
