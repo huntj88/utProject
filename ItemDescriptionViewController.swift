@@ -82,7 +82,7 @@ class ItemDescriptionViewController: UIViewController, UICollectionViewDataSourc
     @IBAction func showEmail(sender: AnyObject) {
         email.text = myItem?.email
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+    /*override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
 
         if segue.identifier == "toSelectedItemImage" {
             let vc = segue.destinationViewController
@@ -92,7 +92,7 @@ class ItemDescriptionViewController: UIViewController, UICollectionViewDataSourc
     }
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle{
         return UIModalPresentationStyle.None
-    }
+    }*/
 
     /*
     // MARK: - Navigation
