@@ -21,16 +21,29 @@ class ItemDescriptionViewController: UIViewController, UICollectionViewDataSourc
     
     var myItem:item?
     
+    var userID:Int?
+    var apiKey:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadUserInfo()
+        
         self.itemName.text = myItem?.itemName
         self.userImage.image = userImagePhoto
         self.username.text = myItem!.name
-        self.price.text = "$"+String((myItem?.price)!)
+        self.price.text = myItem?.price.money()
         self.itemDescription.text = myItem?.description
         
         myCollectionView.dataSource = self
         myCollectionView.delegate = self
+        
+        /*if userID! == (myItem?.userID)!
+        {
+            print(userID)
+            print(myItem?.userID)
+            itemDescription.editable = true
+        }*/
         // Do any additional setup after loading the view.
         
         /*if let url = NSURL(string: "http://138.68.41.247:2996/items/image/da862d74-4363-44e9-baaf-004ebd2e575a.jpg") {
@@ -60,6 +73,28 @@ class ItemDescriptionViewController: UIViewController, UICollectionViewDataSourc
         cell.itemImage.loadImageUsingUrlString("http://138.68.41.247:2996/items/image/"+imageName[indexPath.row])
         
         return cell
+    }
+    
+    
+    func loadUserInfo()
+    {
+        
+        if let plist = Plist(name: "user") {
+            let dict = plist.getValuesInPlistFile()
+            if (dict!["userID"]! as? Int) != 0
+            {
+                userID = dict!["userID"] as? Int
+                apiKey = dict!["apiKey"] as? String
+                /*NSOperationQueue.mainQueue().addOperationWithBlock {
+                 [weak self] in
+                 self?.performSegueWithIdentifier("loginSeg", sender: self)
+                 }*/
+            }
+        } else {
+            print("Unable to get Plist")
+        }
+        
+        
     }
     
 

@@ -235,7 +235,6 @@
                     </view>
                     <connections>
                         <outlet property="address" destination="n61-60-UCj" id="1lJ-0v-RbJ"/>
-                        <outlet property="aptNumber" destination="nkg-pe-yhS" id="NYd-0Z-Log"/>
                         <outlet property="cellPhone" destination="fC8-wS-ics" id="F8C-C0-LBH"/>
                         <outlet property="city" destination="Q9F-S6-3hU" id="7BY-gZ-PzL"/>
                         <outlet property="email" destination="Fbc-mt-Ntv" id="U8x-ZW-bTw"/>
@@ -301,6 +300,12 @@
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16f-Nf-Pef">
+                                                    <rect key="frame" x="88" y="0.0" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -317,6 +322,7 @@
                                         <connections>
                                             <outlet property="itemImage" destination="x5y-VT-nZ0" id="uLm-Yq-nRq"/>
                                             <outlet property="itemName" destination="UPx-Fq-UiP" id="hES-UV-LQc"/>
+                                            <outlet property="price" destination="16f-Nf-Pef" id="79w-zl-0fI"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -504,6 +510,12 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ieC-3n-Um8">
+                                                    <rect key="frame" x="134" y="0.0" width="39" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -519,6 +531,7 @@
                                         <connections>
                                             <outlet property="itemImage" destination="PDV-yj-DKP" id="l56-82-6Vn"/>
                                             <outlet property="itemName" destination="Mf2-tY-k2u" id="iNt-AS-X9j"/>
+                                            <outlet property="price" destination="ieC-3n-Um8" id="mGA-Db-Y8N"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -760,7 +773,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="itemDescriptionImageCell" id="XbD-Rl-IPB" customClass="ItemCollectionViewCell" customModule="Final_Project" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="89.5" width="150" height="141"/>
+                                        <rect key="frame" x="0.0" y="111.5" width="150" height="141"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="141"/>
@@ -806,7 +819,7 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OLa-GF-UED">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OLa-GF-UED">
                                         <rect key="frame" x="93" y="92" width="240" height="128"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -839,6 +852,7 @@
                             <constraint firstItem="PpV-di-1sF" firstAttribute="leading" secondItem="QyP-Eb-j3s" secondAttribute="leading" id="tQz-SE-UGK"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <connections>
                         <outlet property="itemDescription" destination="OLa-GF-UED" id="LD0-2j-Qfy"/>
                         <outlet property="itemName" destination="3hI-rr-Co3" id="fzm-EM-sI0"/>
@@ -892,6 +906,12 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaI-du-zH1">
+                                                    <rect key="frame" x="116" y="0.0" width="39" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -908,6 +928,7 @@
                                         <connections>
                                             <outlet property="itemImage" destination="y9L-Xf-7gz" id="RmL-mC-A6i"/>
                                             <outlet property="itemName" destination="MOD-FC-Cjs" id="AyJ-Yb-zVs"/>
+                                            <outlet property="price" destination="zaI-du-zH1" id="jIG-dE-alD"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -930,10 +951,10 @@
             </objects>
             <point key="canvasLocation" x="2914" y="94"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="wgZ-7N-JPH">
             <objects>
-                <viewController id="B6b-xW-sDy" sceneMemberID="viewController">
+                <viewController id="B6b-xW-sDy" customClass="SettingsViewController" customModule="Final_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Syu-Ac-c9V"/>
                         <viewControllerLayoutGuide type="bottom" id="DBa-OB-Q4f"/>
@@ -963,6 +984,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bK2-GV-Mfx">
                                 <rect key="frame" x="276" y="211" width="48" height="30"/>
                                 <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logout:" destination="B6b-xW-sDy" eventType="touchUpInside" id="P5i-RS-wBb"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -979,10 +1003,13 @@
                             <constraint firstItem="0Ad-mA-KMD" firstAttribute="top" secondItem="Syu-Ac-c9V" secondAttribute="bottom" id="uZj-Jt-jDf"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="41s-R2-L3s" kind="show" identifier="toLogin" id="3gZ-Up-daB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jmu-FC-udb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2914" y="749"/>
+            <point key="canvasLocation" x="339" y="-302"/>
         </scene>
         <!--Item Description View Controller-->
         <scene sceneID="7Hj-Y2-5P7">
@@ -1025,6 +1052,7 @@
         <image name="Background" width="1024" height="768"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nqq-bI-xod"/>
+        <segue reference="3gZ-Up-daB"/>
+        <segue reference="L1o-uh-hNj"/>
     </inferredMetricsTieBreakers>
 </document>
