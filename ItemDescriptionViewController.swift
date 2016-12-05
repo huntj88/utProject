@@ -8,13 +8,14 @@
 
 import UIKit
 
-class ItemDescriptionViewController: UIViewController {
+class ItemDescriptionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     @IBOutlet weak var itemName: UILabel!
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var price: UILabel!
     
+    @IBOutlet weak var myCollectionView: UICollectionView!
     var userImagePhoto = UIImage()
     
     var myItem:item?
@@ -25,6 +26,9 @@ class ItemDescriptionViewController: UIViewController {
         self.userImage.image = userImagePhoto
         self.username.text = myItem!.name
         self.price.text = "$"+String((myItem?.price)!)
+        
+        myCollectionView.dataSource = self
+        myCollectionView.delegate = self
         // Do any additional setup after loading the view.
         
         /*if let url = NSURL(string: "http://138.68.41.247:2996/items/image/da862d74-4363-44e9-baaf-004ebd2e575a.jpg") {
@@ -37,6 +41,23 @@ class ItemDescriptionViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        let imageName = myItem!.imageNames.characters.split{$0 == ","}.map(String.init)
+        return imageName.count
+    }
+    
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        let cell:ItemCollectionViewCell = myCollectionView.dequeueReusableCellWithReuseIdentifier("itemDescriptionImageCell", forIndexPath: indexPath) as! ItemCollectionViewCell
+        
+        let imageName = myItem!.imageNames.characters.split{$0 == ","}.map(String.init)
+        cell.itemImage.loadImageUsingUrlString("http://138.68.41.247:2996/items/image/"+imageName[indexPath.row])
+        
+        return cell
     }
     
 
