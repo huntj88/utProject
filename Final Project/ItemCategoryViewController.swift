@@ -127,6 +127,9 @@ class ItemCategoryViewController: UIViewController, UICollectionViewDataSource, 
         let cell:ItemCollectionViewCell = myCollectionView.dequeueReusableCellWithReuseIdentifier("categoryItemCell", forIndexPath: indexPath) as! ItemCollectionViewCell
         
         cell.itemName.text = items[indexPath.row].itemName
+        let imageName = items[indexPath.row].imageNames.characters.split{$0 == ","}.map(String.init)
+        
+        cell.itemImage.loadImageUsingUrlString("http://138.68.41.247:2996/items/image/"+imageName[0])
         return cell
     }
     

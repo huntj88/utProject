@@ -14,6 +14,7 @@ class ItemDescriptionViewController: UIViewController, UICollectionViewDataSourc
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var price: UILabel!
+    @IBOutlet weak var itemDescription: UITextView!
     
     @IBOutlet weak var myCollectionView: UICollectionView!
     var userImagePhoto = UIImage()
@@ -26,6 +27,7 @@ class ItemDescriptionViewController: UIViewController, UICollectionViewDataSourc
         self.userImage.image = userImagePhoto
         self.username.text = myItem!.name
         self.price.text = "$"+String((myItem?.price)!)
+        self.itemDescription.text = myItem?.description
         
         myCollectionView.dataSource = self
         myCollectionView.delegate = self

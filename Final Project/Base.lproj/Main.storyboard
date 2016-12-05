@@ -268,7 +268,7 @@
                                 </constraints>
                                 <items>
                                     <navigationItem id="xNQ-Wh-PpI">
-                                        <barButtonItem key="leftBarButtonItem" title="Add SHIT" id="Ova-Qm-7U7">
+                                        <barButtonItem key="leftBarButtonItem" title="Add Listing" id="Ova-Qm-7U7">
                                             <connections>
                                                 <action selector="addItemButton:" destination="guX-9g-hM5" id="8Wl-S7-gmA"/>
                                             </connections>
@@ -568,6 +568,7 @@
                         <outlet property="username" destination="4H4-3o-KI4" id="JkV-GV-zWZ"/>
                         <outlet property="year" destination="VBB-9f-SiA" id="ndG-yo-XBh"/>
                         <segue destination="Ute-PF-KS1" kind="show" identifier="toOneOfMyItems" id="Mm3-CR-1hv"/>
+                        <segue destination="LYH-ZV-IYr" kind="show" identifier="toItemDescriptionView" id="nqq-bI-xod"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t2Y-Bt-Tub" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -759,7 +760,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="itemDescriptionImageCell" id="XbD-Rl-IPB" customClass="ItemCollectionViewCell" customModule="Final_Project" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="111.5" width="150" height="141"/>
+                                        <rect key="frame" x="0.0" y="89.5" width="150" height="141"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="141"/>
@@ -805,6 +806,13 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OLa-GF-UED">
+                                        <rect key="frame" x="93" y="92" width="240" height="128"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="3hI-rr-Co3" firstAttribute="top" secondItem="PpV-di-1sF" secondAttribute="top" constant="5" id="2cM-jt-5wm"/>
@@ -832,6 +840,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="itemDescription" destination="OLa-GF-UED" id="LD0-2j-Qfy"/>
                         <outlet property="itemName" destination="3hI-rr-Co3" id="fzm-EM-sI0"/>
                         <outlet property="myCollectionView" destination="mxT-Id-uST" id="S98-YN-8eM"/>
                         <outlet property="price" destination="b8N-1G-lTB" id="YhJ-0g-BIc"/>
@@ -841,7 +850,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FVT-sF-GE5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1582" y="1224"/>
+            <point key="canvasLocation" x="1588" y="1526"/>
         </scene>
         <!--Item Category View Controller-->
         <scene sceneID="kcz-EP-J6A">
@@ -871,7 +880,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="155" height="147"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y9L-Xf-7gz">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y9L-Xf-7gz" customClass="AsyncImageView" customModule="Final_Project" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="155" height="128"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOD-FC-Cjs">
@@ -991,7 +1000,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BDr-gF-dks" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2584" y="1519"/>
+            <point key="canvasLocation" x="2587" y="1526"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="MTs-Og-OOj">
@@ -1016,6 +1025,6 @@
         <image name="Background" width="1024" height="768"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="L1o-uh-hNj"/>
+        <segue reference="nqq-bI-xod"/>
     </inferredMetricsTieBreakers>
 </document>

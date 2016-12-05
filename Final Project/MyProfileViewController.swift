@@ -11,6 +11,7 @@ import UIKit
 class MyProfileViewController: UIViewController ,UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     var items = [item]()
+    var indexOfItem = 0
     var userID:Int?
     var apiKey:String?
     
@@ -147,5 +148,23 @@ class MyProfileViewController: UIViewController ,UICollectionViewDelegate, UICol
         
         
         task.resume()
+    }
+    
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        // handle tap events
+        indexOfItem = indexPath.row
+        performSegueWithIdentifier("toItemDescriptionView", sender: UICollectionViewCell())
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
+        if segue.identifier == "toItemDescriptionView" {
+            print("toItemDescriptionSeg executed!")
+            if let nextView: ItemDescriptionViewController = segue.destinationViewController as? ItemDescriptionViewController{
+                print("correct VC, ItemDescription Screen")
+                nextView.myItem = items[indexOfItem]
+                //print(items[indexOfItem].categoryID)
+                nextView.userImagePhoto = UIImage(named: "Background")!
+            }
+        }
     }
 }
