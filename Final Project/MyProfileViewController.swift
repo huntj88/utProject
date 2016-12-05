@@ -14,6 +14,8 @@ class MyProfileViewController: UIViewController ,UICollectionViewDelegate, UICol
     var indexOfItem = 0
     var userID:Int?
     var apiKey:String?
+    var usernameString:String?
+    var realNameString:String?
     
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var realName: UILabel!
@@ -30,6 +32,8 @@ class MyProfileViewController: UIViewController ,UICollectionViewDelegate, UICol
         userID = getUserID()
         apiKey = getApiKey()
         loadDataFromServer()
+        getUserData()
+        
 
         // Do any additional setup after loading the view.
         myListings.dataSource = self
@@ -70,6 +74,54 @@ class MyProfileViewController: UIViewController ,UICollectionViewDelegate, UICol
         let width = collectionView.frame.width / 2 - 1
         
         return CGSizeMake(width, width)
+    }
+    
+    
+    func getUserData()
+    {
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://138.68.41.247:2996/users/getUserData")!)
+        request.HTTPMethod = "POST"
+        //let postString = "email=huntj88@gmail.com&password=test"
+        let postString = "userID=\(userID!)&apiKey="+apiKey!
+        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
+            guard error == nil && data != nil else {                                                          // check for fundamental networking error
+                print("error=\(error)")
+                return
+            }
+            
+            if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {           // check for http errors
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(response)")
+            }
+            
+            
+            let responseString = String(data: data!, encoding: NSUTF8StringEncoding)!
+            
+            
+            let json: AnyObject? = responseString.parseJSONString
+            
+            
+                
+            if let jsonItem = json![0] as? [String: AnyObject] {
+                    
+                self.realNameString = (jsonItem["name"] as? String) ?? ""
+                self.usernameString = (jsonItem["username"] as? String) ?? ""
+                    
+            }
+            dispatch_async(dispatch_get_main_queue()) {
+                self.username.text = self.usernameString!
+                self.realName.text = self.realNameString!
+            }
+            
+        }
+        
+        
+        print(items.count)
+        
+        
+        
+        task.resume()
     }
 
     
