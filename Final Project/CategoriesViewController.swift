@@ -21,7 +21,8 @@ class CategoriesViewController: UIViewController,UITableViewDataSource,UITableVi
         super.viewDidLoad()
         
         
-        loadUserInfo()
+        userID = getUserID()
+        apiKey = getApiKey()
         
         
         
@@ -109,27 +110,6 @@ class CategoriesViewController: UIViewController,UITableViewDataSource,UITableVi
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         indexOfCategory = indexPath.row
         performSegueWithIdentifier("itemCategorySegue", sender: UICollectionViewCell())
-    }
-    
-    func loadUserInfo()
-    {
-        
-        if let plist = Plist(name: "user") {
-            let dict = plist.getValuesInPlistFile()
-            if (dict!["userID"]! as? Int) != 0
-            {
-                userID = dict!["userID"] as? Int
-                apiKey = dict!["apiKey"] as? String
-                /*NSOperationQueue.mainQueue().addOperationWithBlock {
-                 [weak self] in
-                 self?.performSegueWithIdentifier("loginSeg", sender: self)
-                 }*/
-            }
-        } else {
-            print("Unable to get Plist")
-        }
-        
-        
     }
 
     

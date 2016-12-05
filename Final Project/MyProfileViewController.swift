@@ -27,7 +27,8 @@ class MyProfileViewController: UIViewController ,UICollectionViewDelegate, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         profileImage.image = UIImage(named: "TempProfilePic")
-        loadUserInfo()
+        userID = getUserID()
+        apiKey = getApiKey()
         loadDataFromServer()
 
         // Do any additional setup after loading the view.
@@ -70,27 +71,7 @@ class MyProfileViewController: UIViewController ,UICollectionViewDelegate, UICol
         
         return CGSizeMake(width, width)
     }
-    
-    func loadUserInfo()
-    {
-        
-        if let plist = Plist(name: "user") {
-            let dict = plist.getValuesInPlistFile()
-            if (dict!["userID"]! as? Int) != 0
-            {
-                userID = dict!["userID"] as? Int
-                apiKey = dict!["apiKey"] as? String
-                /*NSOperationQueue.mainQueue().addOperationWithBlock {
-                 [weak self] in
-                 self?.performSegueWithIdentifier("loginSeg", sender: self)
-                 }*/
-            }
-        } else {
-            print("Unable to get Plist")
-        }
-        
-        
-    }
+
     
     func loadDataFromServer()
     {

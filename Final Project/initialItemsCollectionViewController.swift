@@ -25,7 +25,12 @@ class initialItemsCollectionViewController: UIViewController, UICollectionViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadUserInfo()
+        //loadUserInfo()
+        
+        
+        userID = getUserID()
+        apiKey = getApiKey()
+        
         loadDataFromServer()
         
         

@@ -27,7 +27,8 @@ class ItemDescriptionViewController: UIViewController, UICollectionViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadUserInfo()
+        userID = getUserID()
+        apiKey = getApiKey()
         
         self.itemName.text = myItem?.itemName
         self.userImage.image = userImagePhoto
@@ -75,27 +76,6 @@ class ItemDescriptionViewController: UIViewController, UICollectionViewDataSourc
         return cell
     }
     
-    
-    func loadUserInfo()
-    {
-        
-        if let plist = Plist(name: "user") {
-            let dict = plist.getValuesInPlistFile()
-            if (dict!["userID"]! as? Int) != 0
-            {
-                userID = dict!["userID"] as? Int
-                apiKey = dict!["apiKey"] as? String
-                /*NSOperationQueue.mainQueue().addOperationWithBlock {
-                 [weak self] in
-                 self?.performSegueWithIdentifier("loginSeg", sender: self)
-                 }*/
-            }
-        } else {
-            print("Unable to get Plist")
-        }
-        
-        
-    }
     
 
     /*
