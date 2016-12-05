@@ -21,6 +21,8 @@ class ItemDescriptionViewController: UIViewController, UICollectionViewDataSourc
     //var userImagePhoto = UIImage()
     
     var myItem:item?
+    var imageArray = [String]()
+    var selectedImage : String?
     
     var userID:Int?
     var apiKey:String?
@@ -74,25 +76,31 @@ class ItemDescriptionViewController: UIViewController, UICollectionViewDataSourc
         
         let imageName = myItem!.imageNames.characters.split{$0 == ","}.map(String.init)
         cell.itemImage.loadImageUsingUrlString("http://138.68.41.247:2996/items/image/"+imageName[indexPath.row])
+        print(imageArray.count)
+        imageArray.append(imageName[indexPath.row])
         
         return cell
+    }
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        selectedImage = imageArray[indexPath.row]
+        performSegueWithIdentifier("toSelectedItemImage", sender: nil)
     }
     
     
     @IBAction func showEmail(sender: AnyObject) {
         email.text = myItem?.email
     }
-    /*override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
 
         if segue.identifier == "toSelectedItemImage" {
-            let vc = segue.destinationViewController
+            let vc = segue.destinationViewController as! SelectedImageViewController
             vc.popoverPresentationController?.delegate = self
-            
+            vc.pic = selectedImage
         }
     }
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle{
         return UIModalPresentationStyle.None
-    }*/
+    }
 
     /*
     // MARK: - Navigation

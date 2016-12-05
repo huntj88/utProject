@@ -893,7 +893,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8N-1G-lTB">
-                                <rect key="frame" x="557.5" y="264" width="38.5" height="21"/>
+                                <rect key="frame" x="558" y="264" width="39" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="ZVE-K9-rwc"/>
                                 </constraints>
@@ -988,6 +988,12 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEq-qa-so3">
+                                <rect key="frame" x="300" y="149" width="5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1000,11 +1006,13 @@
                             <constraint firstItem="OLa-GF-UED" firstAttribute="leading" secondItem="cri-6J-nLj" secondAttribute="leading" id="IWK-be-P5P"/>
                             <constraint firstItem="5sL-kW-Xvf" firstAttribute="top" secondItem="27X-Vc-49z" secondAttribute="bottom" constant="-30" id="LvE-lI-l3l"/>
                             <constraint firstItem="9ZY-rz-aOF" firstAttribute="leading" secondItem="cri-6J-nLj" secondAttribute="trailing" constant="8" symbolic="YES" id="Rbh-UC-QNv"/>
-                            <constraint firstAttribute="trailing" secondItem="b8N-1G-lTB" secondAttribute="trailing" constant="4" id="SKX-j8-UZG"/>
+                            <constraint firstAttribute="trailing" secondItem="b8N-1G-lTB" secondAttribute="trailing" constant="3" id="SKX-j8-UZG"/>
                             <constraint firstItem="3hI-rr-Co3" firstAttribute="leading" secondItem="QyP-Eb-j3s" secondAttribute="leading" constant="8" id="SeT-XS-XTm"/>
-                            <constraint firstItem="3hI-rr-Co3" firstAttribute="trailing" secondItem="b8N-1G-lTB" secondAttribute="trailing" id="T8s-Sd-llZ"/>
+                            <constraint firstItem="3hI-rr-Co3" firstAttribute="trailing" secondItem="b8N-1G-lTB" secondAttribute="trailing" constant="-1" id="T8s-Sd-llZ"/>
                             <constraint firstItem="mxT-Id-uST" firstAttribute="leading" secondItem="QyP-Eb-j3s" secondAttribute="leading" id="TQV-iH-irH"/>
+                            <constraint firstItem="PEq-qa-so3" firstAttribute="centerX" secondItem="3hI-rr-Co3" secondAttribute="centerX" id="Txy-KS-uPn"/>
                             <constraint firstAttribute="trailing" secondItem="OLa-GF-UED" secondAttribute="trailing" constant="8" id="UBv-qX-jXy"/>
+                            <constraint firstItem="PEq-qa-so3" firstAttribute="centerY" secondItem="mxT-Id-uST" secondAttribute="centerY" id="UNp-Nx-VQg"/>
                             <constraint firstItem="9ZY-rz-aOF" firstAttribute="leading" secondItem="5sL-kW-Xvf" secondAttribute="leading" id="UhG-7F-2US"/>
                             <constraint firstItem="5sL-kW-Xvf" firstAttribute="top" secondItem="9ZY-rz-aOF" secondAttribute="bottom" constant="8" symbolic="YES" id="V3O-pU-Gec"/>
                             <constraint firstAttribute="trailing" secondItem="27X-Vc-49z" secondAttribute="trailing" constant="8" id="b16-Em-1e7"/>
@@ -1024,7 +1032,7 @@
                         <outlet property="price" destination="b8N-1G-lTB" id="YhJ-0g-BIc"/>
                         <outlet property="userImage" destination="cri-6J-nLj" id="Kp2-8e-FpY"/>
                         <outlet property="username" destination="9ZY-rz-aOF" id="dIz-MV-oJQ"/>
-                        <segue destination="O50-oG-HgZ" kind="popoverPresentation" popoverAnchorView="mxT-Id-uST" id="kJ9-oA-Iop">
+                        <segue destination="O50-oG-HgZ" kind="popoverPresentation" identifier="toSelectedItemImage" popoverAnchorView="PEq-qa-so3" id="kJ9-oA-Iop">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
                     </connections>
@@ -1033,10 +1041,10 @@
             </objects>
             <point key="canvasLocation" x="1579" y="1560"/>
         </scene>
-        <!--Selected Image-->
+        <!--Selected Image View Controller-->
         <scene sceneID="ueh-A1-PVk">
             <objects>
-                <viewController id="O50-oG-HgZ" customClass="SelectedImage" customModule="Final_Project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="O50-oG-HgZ" customClass="SelectedImageViewController" customModule="Final_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CJA-0X-fyf"/>
                         <viewControllerLayoutGuide type="bottom" id="fKV-QA-bRP"/>
@@ -1045,7 +1053,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Esh-Xw-SNC">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Esh-Xw-SNC" customClass="AsyncImageView" customModule="Final_Project" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                         </subviews>
@@ -1058,7 +1066,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="imageDisplay" destination="Esh-Xw-SNC" id="mxs-Hc-L2G"/>
+                        <outlet property="imageDisplay" destination="Esh-Xw-SNC" id="NPL-7H-s2B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f62-gl-sMO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1195,7 +1203,7 @@
                                 <state key="normal" title="Invite Friends"/>
                                 <connections>
                                     <action selector="inviteFriends:" destination="B6b-xW-sDy" eventType="touchUpInside" id="fyN-ig-M5y"/>
-                                    <segue destination="W51-WR-R8g" kind="popoverPresentation" identifier="toInviteFriends" popoverAnchorView="s8O-9I-sLb" id="hxf-Yq-fo5">
+                                    <segue destination="W51-WR-R8g" kind="popoverPresentation" identifier="toInviteFriends" popoverAnchorView="2g4-bp-NW1" id="hxf-Yq-fo5">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
                                 </connections>
@@ -1204,7 +1212,7 @@
                                 <rect key="frame" x="284" y="178" width="32" height="30"/>
                                 <state key="normal" title="Help"/>
                                 <connections>
-                                    <segue destination="W51-WR-R8g" kind="popoverPresentation" identifier="toInviteFriends" popoverAnchorView="us8-Zc-vTH" id="f8K-sU-6Wf">
+                                    <segue destination="W51-WR-R8g" kind="popoverPresentation" identifier="toInviteFriends" popoverAnchorView="5Lt-9A-xEE" id="f8K-sU-6Wf">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
                                 </connections>
@@ -1216,6 +1224,18 @@
                                     <action selector="logout:" destination="B6b-xW-sDy" eventType="touchUpInside" id="P5i-RS-wBb"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2g4-bp-NW1">
+                                <rect key="frame" x="298" y="175" width="5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Lt-9A-xEE">
+                                <rect key="frame" x="297" y="207" width="5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1223,11 +1243,15 @@
                             <constraint firstItem="us8-Zc-vTH" firstAttribute="centerX" secondItem="s8O-9I-sLb" secondAttribute="centerX" id="BWz-RF-8QU"/>
                             <constraint firstItem="9us-uy-kIy" firstAttribute="top" secondItem="Syu-Ac-c9V" secondAttribute="bottom" constant="53" id="HwS-Jz-7Wf"/>
                             <constraint firstItem="bK2-GV-Mfx" firstAttribute="top" secondItem="us8-Zc-vTH" secondAttribute="bottom" constant="3" id="JzA-YX-Tf8"/>
+                            <constraint firstItem="5Lt-9A-xEE" firstAttribute="top" secondItem="2g4-bp-NW1" secondAttribute="bottom" constant="11" id="OFn-qG-4Me"/>
                             <constraint firstItem="9us-uy-kIy" firstAttribute="centerX" secondItem="dAO-zs-Wtx" secondAttribute="centerX" id="OhR-5Y-gzE"/>
+                            <constraint firstItem="2g4-bp-NW1" firstAttribute="centerX" secondItem="dAO-zs-Wtx" secondAttribute="centerX" id="QmA-8e-bFe"/>
+                            <constraint firstItem="2g4-bp-NW1" firstAttribute="top" secondItem="9us-uy-kIy" secondAttribute="bottom" constant="28" id="Rre-kF-3p6"/>
                             <constraint firstItem="us8-Zc-vTH" firstAttribute="centerX" secondItem="0Ad-mA-KMD" secondAttribute="centerX" id="TbG-ec-XMU"/>
                             <constraint firstItem="us8-Zc-vTH" firstAttribute="top" secondItem="s8O-9I-sLb" secondAttribute="bottom" constant="1" id="UQd-Ua-lai"/>
                             <constraint firstItem="s8O-9I-sLb" firstAttribute="top" secondItem="9us-uy-kIy" secondAttribute="bottom" id="UUY-dh-ovK"/>
                             <constraint firstItem="us8-Zc-vTH" firstAttribute="centerX" secondItem="bK2-GV-Mfx" secondAttribute="centerX" id="XVy-EL-g2O"/>
+                            <constraint firstItem="5Lt-9A-xEE" firstAttribute="centerX" secondItem="us8-Zc-vTH" secondAttribute="centerX" id="b7c-kF-gOw"/>
                             <constraint firstItem="0Ad-mA-KMD" firstAttribute="top" secondItem="Syu-Ac-c9V" secondAttribute="bottom" id="uZj-Jt-jDf"/>
                         </constraints>
                     </view>
@@ -1339,8 +1363,8 @@
         <image name="Background" width="1024" height="768"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Heb-NB-Hal"/>
+        <segue reference="3gZ-Up-daB"/>
         <segue reference="nqq-bI-xod"/>
-        <segue reference="hxf-Yq-fo5"/>
+        <segue reference="f8K-sU-6Wf"/>
     </inferredMetricsTieBreakers>
 </document>
