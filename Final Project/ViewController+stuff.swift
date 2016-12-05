@@ -11,7 +11,7 @@ import UIKit
 import CoreData
 extension UIViewController{
     
-    func saveInfo(userID: Int,apiKey: String) {
+    func saveInfo(userID: Int,apiKey: String,imageName:String) {
         let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
         
@@ -25,6 +25,7 @@ extension UIViewController{
         
         userInfo.setValue(userID, forKey: "userID")
         userInfo.setValue(apiKey, forKey: "apiKey")
+        userInfo.setValue(imageName, forKey: "imageName")
         
         do {
             try managedContext.save()

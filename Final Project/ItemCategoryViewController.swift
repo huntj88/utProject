@@ -130,7 +130,7 @@ class ItemCategoryViewController: UIViewController, UICollectionViewDataSource, 
                 print("correct VC, ItemDescription Screen")
                 nextView.myItem = items[indexOfItem]
                 //print(items[indexOfItem].categoryID)
-                nextView.userImagePhoto = UIImage(named: "Background")!
+                //nextView.userImagePhoto = UIImage(named: "Background")!
             }
         }
         if segue.identifier == "toOneOfMyItems" {
@@ -139,7 +139,7 @@ class ItemCategoryViewController: UIViewController, UICollectionViewDataSource, 
                 print("correct VC, ItemDescription Screen")
                 nextView.myItem = items[indexOfItem]
                 //print(items[indexOfItem].categoryID)
-                nextView.userImagePhoto = UIImage(named: "Background")!
+                //nextView.userImagePhoto = UIImage(named: "Background")!
             }
         }
 

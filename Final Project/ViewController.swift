@@ -91,7 +91,8 @@ class ViewController: UIViewController {
                     {
                         self.userID = item["userID"] as? Int
                         self.apiKey = item["apiKey"] as? String
-                        self.saveInfo((item["userID"] as? Int)!, apiKey: (item["apiKey"] as? String)!)
+                        let imageName = item["imageName"] as? String
+                        self.saveInfo((item["userID"] as? Int)!, apiKey: (item["apiKey"] as? String)!,imageName: imageName!)
                         //print("\(self.userID!)  "+self.apiKey!)
                         print(self.userID!)
                         print(self.apiKey!)

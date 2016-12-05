@@ -20,13 +20,14 @@ class MyProfileViewController: UIViewController ,UICollectionViewDelegate, UICol
     @IBOutlet weak var year: UILabel!
     @IBOutlet weak var major: UILabel!
 
-    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var profileImage: AsyncImageView!
     
     @IBOutlet weak var myListings: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         profileImage.image = UIImage(named: "TempProfilePic")
+        //profileImage.image.loadImageUsingUrlString("http://138.68.41.247:2996/items/image/"+imageName[0])
         userID = getUserID()
         apiKey = getApiKey()
         loadDataFromServer()
@@ -145,7 +146,7 @@ class MyProfileViewController: UIViewController ,UICollectionViewDelegate, UICol
                 print("correct VC, ItemDescription Screen")
                 nextView.myItem = items[indexOfItem]
                 //print(items[indexOfItem].categoryID)
-                nextView.userImagePhoto = UIImage(named: "Background")!
+                //nextView.userImagePhoto = UIImage(named: "Background")!
             }
         }
     }

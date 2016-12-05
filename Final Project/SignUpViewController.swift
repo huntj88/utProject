@@ -25,11 +25,13 @@ class SignUpViewController: UIViewController, UICollectionViewDelegate , UIImage
     
     var userID:Int?
     var apiKey:String?
-    
+    var imageName:String?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        profilePic.image = UIImage(named: "TempProfilePic")
+        myImageUploadRequest()
 
         // Do any additional setup after loading the view.
     }
@@ -41,13 +43,12 @@ class SignUpViewController: UIViewController, UICollectionViewDelegate , UIImage
     
     @IBAction func SignUp(sender: AnyObject) {
         
-        
         let request = NSMutableURLRequest(URL: NSURL(string: "http://138.68.41.247:2996/users/register")!)
         request.HTTPMethod = "POST"
         //let postString = "email=huntj88@gmail.com&password=test"
         var postString = "email="+email.text!+"&password="+password.text!+"&phone="+cellPhone.text!
         postString+="&address="+address.text!+"&zip="+zipCode.text!+"&username="+username.text!
-        postString+="&city="+city.text!+"&name="+fullName.text!
+        postString+="&city="+city.text!+"&name="+fullName.text!+"&imageName="+imageName!
         
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
@@ -76,9 +77,11 @@ class SignUpViewController: UIViewController, UICollectionViewDelegate , UIImage
                     print(self.userID!)
                     print(self.apiKey!)
                     
+                    self.saveInfo((item["userID"] as? Int)!, apiKey: (item["apiKey"] as? String)!,imageName: self.imageName!)
+                    
                     
                     //1
-                    if let plist = Plist(name: "user") {
+                    /*if let plist = Plist(name: "user") {
                         //2
                         let dict = plist.getMutablePlistFile()!
                         dict["userID"] = self.userID!
@@ -92,7 +95,7 @@ class SignUpViewController: UIViewController, UICollectionViewDelegate , UIImage
                         print(plist.getValuesInPlistFile())
                     } else {
                         print("Unable to get Plist")
-                    }
+                    }*/
                     
                     self.performSegueWithIdentifier("toLogin", sender: nil)
                 }
@@ -104,7 +107,7 @@ class SignUpViewController: UIViewController, UICollectionViewDelegate , UIImage
         
     }
     
-    /*func myImageUploadRequest()
+    func myImageUploadRequest()
     {
         
         let myUrl = NSURL(string: "http://138.68.41.247:2996/users/uploadProfileImage");
@@ -113,8 +116,8 @@ class SignUpViewController: UIViewController, UICollectionViewDelegate , UIImage
         request.HTTPMethod = "POST";
         
         let param = [
-            "userID"  : String(userID!),
-            "apiKey"    : apiKey!
+            "userID"  : "0",
+            "apiKey"    : "dev123"
         ]
         
         let boundary = generateBoundaryString()
@@ -122,7 +125,7 @@ class SignUpViewController: UIViewController, UICollectionViewDelegate , UIImage
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         
         
-        let imageData = UIImageJPEGRepresentation(selectedImagesArray[imageIndex], 1)
+        let imageData = UIImageJPEGRepresentation(profilePic.image!, 1)
         
         if(imageData==nil)  { return; }
         
@@ -146,7 +149,7 @@ class SignUpViewController: UIViewController, UICollectionViewDelegate , UIImage
             let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
             print("****** response data = \(responseString!)")
             
-            do {
+            /*do {
                 let json = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary
                 
                 print(json)
@@ -159,7 +162,11 @@ class SignUpViewController: UIViewController, UICollectionViewDelegate , UIImage
             }catch
             {
                 print(error)
-            }
+            }*/
+            
+            print(responseString)
+            self.imageName = responseString! as String
+            
             //self.numImagesFinishedUploading+=1
             
             /*if self.numImagesFinishedUploading == self.selectedImagesArray.count
@@ -200,7 +207,7 @@ class SignUpViewController: UIViewController, UICollectionViewDelegate , UIImage
         body.appendString("--\(boundary)--\r\n")
         
         return body
-    }*/
+    }
     
     
     

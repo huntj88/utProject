@@ -554,7 +554,7 @@
                                 <color key="shadowColor" red="0.01406049967974432" green="0.62182681675727869" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <size key="shadowOffset" width="1" height="1"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gBW-7C-eJb">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gBW-7C-eJb" customClass="AsyncImageView" customModule="Final_Project" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="DcX-mA-WDu"/>
@@ -1290,7 +1290,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Heb-NB-Hal"/>
-        <segue reference="L1o-uh-hNj"/>
+        <segue reference="nqq-bI-xod"/>
         <segue reference="f8K-sU-6Wf"/>
     </inferredMetricsTieBreakers>
 </document>

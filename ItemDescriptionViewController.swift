@@ -13,12 +13,12 @@ class ItemDescriptionViewController: UIViewController, UICollectionViewDataSourc
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var itemName: UILabel!
     @IBOutlet weak var username: UILabel!
-    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var userImage: AsyncImageView!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var itemDescription: UITextView!
     
     @IBOutlet weak var myCollectionView: UICollectionView!
-    var userImagePhoto = UIImage()
+    //var userImagePhoto = UIImage()
     
     var myItem:item?
     
@@ -32,7 +32,8 @@ class ItemDescriptionViewController: UIViewController, UICollectionViewDataSourc
         apiKey = getApiKey()
         
         self.itemName.text = myItem?.itemName
-        self.userImage.image = userImagePhoto
+        //cell.itemImage.loadImageUsingUrlString("http://138.68.41.247:2996/items/image/"+imageName[0])
+        self.userImage.loadImageUsingUrlString("http://138.68.41.247:2996/items/image/"+(myItem?.userImage)!)
         self.username.text = myItem!.name
         self.price.text = myItem?.price.money()
         self.itemDescription.text = myItem?.description

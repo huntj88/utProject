@@ -180,7 +180,7 @@ class initialItemsCollectionViewController: UIViewController, UICollectionViewDa
                 print("correct VC, ItemDescription Screen")
                 nextView.myItem = items[indexOfItem]
                 //print(items[indexOfItem].categoryID)
-                nextView.userImagePhoto = UIImage(named: "Background")!
+                //nextView.userImagePhoto = UIImage(named: "Background")!
             }
         }
         else if segue.identifier == "addItemSegue" {
