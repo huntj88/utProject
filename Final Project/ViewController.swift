@@ -9,6 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    
 
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -23,6 +25,7 @@ class ViewController: UIViewController {
         
         
     }
+    
     override func viewWillAppear(animated: Bool) {
         
         /*if let plist = Plist(name: "user") {
@@ -54,6 +57,8 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+
 
     @IBAction func login(sender: AnyObject) {
         
