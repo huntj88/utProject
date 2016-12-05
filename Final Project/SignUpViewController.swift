@@ -181,13 +181,41 @@ class SignUpViewController: UIViewController, UICollectionViewDelegate , UIImage
         
         task.resume()
     }
-    @IBAction func photoLibraryAction(sender: UIButton) {
-        print("Pressed photolibrary Button!")
+    @IBAction func takePhoto(sender: UIButton) {
         let picker = UIImagePickerController()
         picker.delegate = self
-        picker.sourceType = .PhotoLibrary
+        picker.sourceType = .Camera
         
         presentViewController(picker, animated: true, completion: nil)
+    }
+    @IBAction func photoLibraryAction(sender: UIButton) {
+     print("Pressed photolibrary Button!")
+     let picker = UIImagePickerController()
+     picker.delegate = self
+     picker.sourceType = .PhotoLibrary
+     
+     presentViewController(picker, animated: true, completion: nil)
+     }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        //selecting image form photo library and appending it to selectedImagesArray
+        print("Calling func imagePickerController")
+        
+        var currentImage : UIImage?
+        currentImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        profilePic.image = currentImage
+        dismissViewControllerAnimated(true, completion: nil)
+        print("you have added a profile photo")
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
+        if segue.identifier == "toLogin" {
+            print("gen")
+            if let nextView: ViewController = segue.destinationViewController as? ViewController{
+                print("correct VC, Login Sreen")
+                //nextVC.incomingText = self.input.text!
+            }
+        }
     }
     
     
@@ -224,15 +252,6 @@ class SignUpViewController: UIViewController, UICollectionViewDelegate , UIImage
         return "Boundary-\(NSUUID().UUIDString)"
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
-        if segue.identifier == "toLogin" {
-            print("gen")
-            if let nextView: ViewController = segue.destinationViewController as? ViewController{
-                print("correct VC, Login Sreen")
-                //nextVC.incomingText = self.input.text!
-            }
-        }
-    }
     /*
     // MARK: - Navigation
 
