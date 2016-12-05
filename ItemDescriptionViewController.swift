@@ -10,6 +10,7 @@ import UIKit
 
 class ItemDescriptionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
+    @IBOutlet weak var email: UILabel!
     @IBOutlet weak var itemName: UILabel!
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var userImage: UIImageView!
@@ -77,6 +78,9 @@ class ItemDescriptionViewController: UIViewController, UICollectionViewDataSourc
     }
     
     
+    @IBAction func showEmail(sender: AnyObject) {
+        email.text = myItem?.email
+    }
 
     /*
     // MARK: - Navigation
