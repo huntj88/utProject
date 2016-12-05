@@ -9,7 +9,8 @@
 import UIKit
 import CoreData
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UICollectionViewDelegate , UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     //MARK: Properties
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var username: UITextField!
@@ -19,6 +20,8 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var city: UITextField!
     @IBOutlet weak var zipCode: UITextField!
     @IBOutlet weak var fullName: UITextField!
+    @IBOutlet weak var profilePic: UIImageView!
+    
     
     var userID:Int?
     var apiKey:String?
@@ -100,6 +103,33 @@ class SignUpViewController: UIViewController {
         task.resume()
         
     }
+    @IBAction func takePhoto(sender: UIButton) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .Camera
+        
+        presentViewController(picker, animated: true, completion: nil)
+    }
+    /*@IBAction func photoLibraryAction(sender: UIButton) {
+        print("Pressed photolibrary Button!")
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .PhotoLibrary
+        
+        presentViewController(picker, animated: true, completion: nil)
+    }*/
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        //selecting image form photo library and appending it to selectedImagesArray
+        print("Calling func imagePickerController")
+        
+        var currentImage : UIImage?
+        currentImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        profilePic.image = currentImage
+        dismissViewControllerAnimated(true, completion: nil)
+        print("you have added a profile photo")
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
         if segue.identifier == "toLogin" {
             print("gen")

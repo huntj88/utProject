@@ -8,7 +8,8 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, UIPopoverPresentationControllerDelegate{
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,16 +22,10 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     @IBAction func logout(sender: AnyObject) {
         
@@ -43,14 +38,25 @@ class SettingsViewController: UIViewController {
         }
         
     }
+    @IBAction func inviteFriends(sender: UIButton) {
+        
+        self.performSegueWithIdentifier("toInviteFriends", sender: nil)
+    }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
         if segue.identifier == "toLogin" {
             print("gen")
-            if let _: ViewController = segue.destinationViewController as? ViewController{
+            if var _ : ViewController = segue.destinationViewController as? ViewController{
                 print("correct VC, Login Sreen")
-                //nextVC.incomingText = self.input.text!
             }
         }
+        if segue.identifier == "toInviteFriends" {
+            let vc = segue.destinationViewController
+            vc.popoverPresentationController?.delegate = self
+        }
     }
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle{
+        return UIModalPresentationStyle.None
+    }
+
 }
