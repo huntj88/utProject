@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemDescriptionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class ItemDescriptionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var itemName: UILabel!
@@ -81,6 +81,17 @@ class ItemDescriptionViewController: UIViewController, UICollectionViewDataSourc
     
     @IBAction func showEmail(sender: AnyObject) {
         email.text = myItem?.email
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+
+        if segue.identifier == "toSelectedItemImage" {
+            let vc = segue.destinationViewController
+            vc.popoverPresentationController?.delegate = self
+            
+        }
+    }
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle{
+        return UIModalPresentationStyle.None
     }
 
     /*
