@@ -130,6 +130,7 @@ class ItemCategoryViewController: UIViewController, UICollectionViewDataSource, 
         let imageName = items[indexPath.row].imageNames.characters.split{$0 == ","}.map(String.init)
         
         cell.itemImage.loadImageUsingUrlString("http://138.68.41.247:2996/items/image/"+imageName[0])
+        cell.price.text = items[indexPath.row].price.money()
         return cell
     }
     

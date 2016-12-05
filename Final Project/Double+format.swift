@@ -9,6 +9,6 @@
 import Foundation
 extension Double {
     func money() -> String {
-        return "$"+String(format: "%\(".2")f", self)
+        return "$"+String(format: "%\(".0")f", self)
     }
 }
