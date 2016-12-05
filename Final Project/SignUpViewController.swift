@@ -25,12 +25,13 @@ class SignUpViewController: UIViewController, UICollectionViewDelegate , UIImage
     
     var userID:Int?
     var apiKey:String?
-    
+    var imageName:String?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        profilePic.image = UIImage(named: "Smiley")
+        profilePic.image = UIImage(named: "TempProfilePic")
+        myImageUploadRequest()
 
         // Do any additional setup after loading the view.
     }
@@ -42,13 +43,12 @@ class SignUpViewController: UIViewController, UICollectionViewDelegate , UIImage
     
     @IBAction func SignUp(sender: AnyObject) {
         
-        
         let request = NSMutableURLRequest(URL: NSURL(string: "http://138.68.41.247:2996/users/register")!)
         request.HTTPMethod = "POST"
         //let postString = "email=huntj88@gmail.com&password=test"
         var postString = "email="+email.text!+"&password="+password.text!+"&phone="+cellPhone.text!
         postString+="&address="+address.text!+"&zip="+zipCode.text!+"&username="+username.text!
-        postString+="&city="+city.text!+"&name="+fullName.text!
+        postString+="&city="+city.text!+"&name="+fullName.text!+"&imageName="+imageName!
         
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
@@ -77,9 +77,11 @@ class SignUpViewController: UIViewController, UICollectionViewDelegate , UIImage
                     print(self.userID!)
                     print(self.apiKey!)
                     
+                    self.saveInfo((item["userID"] as? Int)!, apiKey: (item["apiKey"] as? String)!,imageName: self.imageName!)
+                    
                     
                     //1
-                    if let plist = Plist(name: "user") {
+                    /*if let plist = Plist(name: "user") {
                         //2
                         let dict = plist.getMutablePlistFile()!
                         dict["userID"] = self.userID!
@@ -93,7 +95,7 @@ class SignUpViewController: UIViewController, UICollectionViewDelegate , UIImage
                         print(plist.getValuesInPlistFile())
                     } else {
                         print("Unable to get Plist")
-                    }
+                    }*/
                     
                     self.performSegueWithIdentifier("toLogin", sender: nil)
                 }
@@ -104,31 +106,113 @@ class SignUpViewController: UIViewController, UICollectionViewDelegate , UIImage
         task.resume()
         
     }
-    @IBAction func takePhoto(sender: UIButton) {
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        picker.sourceType = .Camera
+    
+    func myImageUploadRequest()
+    {
         
-        presentViewController(picker, animated: true, completion: nil)
-    }
-    @IBAction func photoLibraryAction(sender: UIButton) {
-        print("Pressed photolibrary Button!")
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        picker.sourceType = .PhotoLibrary
+        let myUrl = NSURL(string: "http://138.68.41.247:2996/users/uploadProfileImage");
         
-        presentViewController(picker, animated: true, completion: nil)
+        let request = NSMutableURLRequest(URL:myUrl!);
+        request.HTTPMethod = "POST";
+        
+        let param = [
+            "userID"  : "0",
+            "apiKey"    : "dev123"
+        ]
+        
+        let boundary = generateBoundaryString()
+        
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        
+        
+        let imageData = UIImageJPEGRepresentation(profilePic.image!, 1)
+        
+        if(imageData==nil)  { return; }
+        
+        request.HTTPBody = createBodyWithParameters(param, filePathKey: "file", imageDataKey: imageData!, boundary: boundary)
+        
+        
+        //myActivityIndicator.startAnimating();
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+            data, response, error in
+            
+            if error != nil {
+                print("error=\(error)")
+                return
+            }
+            
+            // You can print out response object
+            print("******* response = \(response)")
+            
+            // Print out reponse body
+            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            print("****** response data = \(responseString!)")
+            
+            /*do {
+                let json = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary
+                
+                print(json)
+                
+                dispatch_async(dispatch_get_main_queue(),{
+                    //self.myActivityIndicator.stopAnimating()
+                    //self.myImageView.image = nil;
+                });
+                
+            }catch
+            {
+                print(error)
+            }*/
+            
+            print(responseString)
+            self.imageName = responseString! as String
+            
+            //self.numImagesFinishedUploading+=1
+            
+            /*if self.numImagesFinishedUploading == self.selectedImagesArray.count
+            {
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.navigationController?.popToRootViewControllerAnimated(true)
+                }
+            }*/
+            
+        }
+        
+        task.resume()
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        //selecting image form photo library and appending it to selectedImagesArray
-        print("Calling func imagePickerController")
+    
+    func createBodyWithParameters(parameters: [String: String]?, filePathKey: String?, imageDataKey: NSData, boundary: String) -> NSData {
+        let body = NSMutableData();
         
-        var currentImage : UIImage?
-        currentImage = info[UIImagePickerControllerOriginalImage] as? UIImage
-        profilePic.image = currentImage
-        dismissViewControllerAnimated(true, completion: nil)
-        print("you have added a profile photo")
+        if parameters != nil {
+            for (key, value) in parameters! {
+                body.appendString("--\(boundary)\r\n")
+                body.appendString("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n")
+                body.appendString("\(value)\r\n")
+            }
+        }
+        
+        let filename = "user-profile.jpg"
+        let mimetype = "image/jpg"
+        
+        body.appendString("--\(boundary)\r\n")
+        body.appendString("Content-Disposition: form-data; name=\"\(filePathKey!)\"; filename=\"\(filename)\"\r\n")
+        body.appendString("Content-Type: \(mimetype)\r\n\r\n")
+        body.appendData(imageDataKey)
+        body.appendString("\r\n")
+        
+        
+        
+        body.appendString("--\(boundary)--\r\n")
+        
+        return body
+    }
+    
+    
+    
+    func generateBoundaryString() -> String {
+        return "Boundary-\(NSUUID().UUIDString)"
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
@@ -151,3 +235,10 @@ class SignUpViewController: UIViewController, UICollectionViewDelegate , UIImage
     */
 
 }
+/*extension NSMutableData {
+    
+    func appendString(string: String) {
+        let data = string.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+        appendData(data!)
+    }
+}*/

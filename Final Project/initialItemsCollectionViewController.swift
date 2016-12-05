@@ -119,7 +119,7 @@ class initialItemsCollectionViewController: UIViewController, UICollectionViewDa
                     
                     let imageNames = (jsonItem["imageNames"] as? String) ?? ""
                     
-                    let objectThing:item = item(name: (jsonItem["username"] as? String)!,itemID: (jsonItem["itemID"] as? Int)!,description: (jsonItem["itemDescription"] as? String)!,userID: (jsonItem["userID"] as? Int)!,categoryID: (jsonItem["categoryID"] as? Int)!,itemName: (jsonItem["itemName"] as? String)!,categoryName: (jsonItem["categoryName"] as? String)!,price: (jsonItem["price"] as? Double)!,imageNames: imageNames,email: (jsonItem["email"] as? String)!)
+                    let objectThing:item = item(name: (jsonItem["username"] as? String)!,itemID: (jsonItem["itemID"] as? Int)!,description: (jsonItem["itemDescription"] as? String)!,userID: (jsonItem["userID"] as? Int)!,categoryID: (jsonItem["categoryID"] as? Int)!,itemName: (jsonItem["itemName"] as? String)!,categoryName: (jsonItem["categoryName"] as? String)!,price: (jsonItem["price"] as? Double)!,imageNames: imageNames,email: (jsonItem["email"] as? String)!,userImage: (jsonItem["userImage"] as? String)!)
                     
                     self.items.append(objectThing)
                 }
@@ -180,7 +180,7 @@ class initialItemsCollectionViewController: UIViewController, UICollectionViewDa
                 print("correct VC, ItemDescription Screen")
                 nextView.myItem = items[indexOfItem]
                 //print(items[indexOfItem].categoryID)
-                nextView.userImagePhoto = UIImage(named: "Background")!
+                //nextView.userImagePhoto = UIImage(named: "Background")!
             }
         }
         else if segue.identifier == "addItemSegue" {
