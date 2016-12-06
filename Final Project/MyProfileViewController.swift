@@ -71,7 +71,7 @@ class MyProfileViewController: UIViewController ,UICollectionViewDelegate, UICol
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let width = collectionView.frame.width / 2 - 1
+        let width = collectionView.frame.width / 2 - 5
         
         return CGSizeMake(width, width)
     }
